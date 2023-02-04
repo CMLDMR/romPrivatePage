@@ -1,0 +1,48 @@
+
+
+.aa{
+    background-color: yellow;
+
+}
+
+
+.aa:hover {
+    background-color: green;
+  }
+
+
+.item{
+    color: aliceblue;
+    font-size: 10px;
+    position: absolute;
+    top: 31%;
+    left: 18px;
+}
+
+.tileContainer{
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-left-style: solid;
+    font-size: 8px;
+}
+
+
+.buildItem{
+    cursor: crosshair;
+
+}
+
+
+.buildItem:hover{
+    background-color: rgba(125, green, blue, 0.5);
+    cursor: pointer;
+}
+
+
+
+
+.cityMap{
+    cursor: grab;
+    overflow: hidden;
+}

@@ -4,7 +4,7 @@
 #include <Wt/WString.h>
 #include <vector>
 #include <random>
-
+#include <utility/style.h>
 
 using namespace Wt;
 
@@ -15,27 +15,38 @@ CityMap::CityMap()
     this->setWidth(WLength("100%"));
     this->setHeight(WLength("100%"));
     this->setOffsets(0,Side::Left|Side::Top);
-
-    this->setOverflow(Overflow::Scroll);
+    this->setContentAlignment(AlignmentFlag::Center);
+    this->setScrollVisibilityEnabled(false);
+    this->setOverflow(Overflow::Hidden);
+    this->setId("citymap");
 
 
     mMap = this->addNew<WContainerWidget>();
     mMap->setWidth(1920);
     mMap->setHeight(1080);
     mMap->setPositionScheme(PositionScheme::Relative);
-    mMap->setAttributeValue("style","background:url(cityground.jpg);;background-repeat:no-repeat;background-size:cover");
+    mMap->setMaximumSize(1920,1080);
+    mMap->addStyleClass("cityMap");
 
-
+    mMap->setAttributeValue(Style::style,Style::background::url("cityground.jpg")
+                            +Style::background::size::cover
+                            +Style::background::repeat::norepeat
+                            +Style::background::position::center_center);
 
     auto coorText = addNew<WText>();
     coorText->setPositionScheme(PositionScheme::Absolute);
     coorText->setOffsets(0,Side::Left|Side::Bottom);
 
+    this->doJavaScript("handDrag();");
 
-    mMap->mouseMoved().connect([=]( const Wt::WMouseEvent &event ){
-        coorText->setText(WString("{1} {2}").arg(event.widget().x).arg(event.widget().y));
-    });
 
+//    mMap->mouseMoved().connect([=]( const Wt::WMouseEvent &event ){
+//        coorText->setText(WString("{1} {2}").arg(event.widget().x).arg(event.widget().y));
+//    });
+
+
+
+//    return;
 //    mMap->mouseWentDown().connect([=]( const Wt::WMouseEvent &event){
 //        std::cout << event.widget().x << " " << event.widget().y << "\n";
 //    });
