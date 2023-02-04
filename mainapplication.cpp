@@ -9,7 +9,8 @@ MainApplication::MainApplication(const WEnvironment &env)
     :Wt::WApplication(env)
 {
 
-    WApplication::useStyleSheet(WLink("main.css"));
+    WApplication::useStyleSheet(WLink("css/main.css"));
+    Wt::WApplication::require("script/script.js");
 
 //    mWorld = root()->addNew<World>();
     mCityMap = root()->addNew<CityMap>();
