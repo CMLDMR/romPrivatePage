@@ -95,9 +95,6 @@ CityMap::CityMap()
         int y = uniform_dist(e1);
 
         this->addBuild((x*i)%1920,(y*i)%1080,list[i%list.size()].path,list[i%list.size()].width,list[i%list.size()].height);
-
-
-
     }
 
 
