@@ -22,10 +22,10 @@ CityMap::CityMap()
 
 
     mMap = this->addNew<WContainerWidget>();
-    mMap->setWidth(1920);
-    mMap->setHeight(1080);
+    mMap->setWidth(3000);
+    mMap->setHeight(2000);
     mMap->setPositionScheme(PositionScheme::Relative);
-    mMap->setMaximumSize(1920,1080);
+    mMap->setMaximumSize(3000,2000);
     mMap->addStyleClass("cityMap");
 
     mMap->setAttributeValue(Style::style,Style::background::url("cityground.jpg")
@@ -47,9 +47,9 @@ CityMap::CityMap()
 
 
 //    return;
-//    mMap->mouseWentDown().connect([=]( const Wt::WMouseEvent &event){
-//        std::cout << event.widget().x << " " << event.widget().y << "\n";
-//    });
+    mMap->mouseWentDown().connect([=]( const Wt::WMouseEvent &event){
+        std::cout << event.widget().x << " " << event.widget().y << "\n";
+    });
 
 
     this->addBuild(200,480,"b001.png",72,57);
@@ -105,7 +105,7 @@ CityMap::CityMap()
         int x = uniform_dist(e1);
         int y = uniform_dist(e1);
 
-        this->addBuild((x*i)%1920,(y*i)%1080,list[i%list.size()].path,list[i%list.size()].width,list[i%list.size()].height);
+        this->addBuild((x*i)%2800+100,(y*i)%1800+100,list[i%list.size()].path,list[i%list.size()].width,list[i%list.size()].height);
     }
 
 
