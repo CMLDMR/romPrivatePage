@@ -7,7 +7,9 @@
 using namespace Wt;
 
 class World;
+namespace City{
 class CityMap;
+}
 class ControlPanelWidget;
 
 class MainApplication : public WApplication
@@ -18,7 +20,7 @@ public:
 
 private:
     World* mWorld;
-    CityMap* mCityMap;
+    City::CityMap* mCityMap;
     ControlPanelWidget* mControlPanel;
 };
 
