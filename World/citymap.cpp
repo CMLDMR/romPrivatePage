@@ -10,6 +10,7 @@
 #include "City/controlpanel.h"
 #include "City/citymanager.h"
 #include "City/assetsmanager.h"
+#include "City/taskmanager.h"
 
 using namespace Wt;
 
@@ -28,7 +29,7 @@ City::CityMap::CityMap()
     mControlPanel = this->addNew<ControlPanel>();
     mCityManager = this->addNew<CityManager>();
     mAssetsManager = this->addNew<AssetsManager>();
-
+    mTaskManager = this->addNew<TaskManager>();
 
 
     auto cityContainer = this->addNew<WContainerWidget>();
