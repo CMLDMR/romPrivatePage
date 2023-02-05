@@ -13,7 +13,7 @@ function handDrag(){
     let pos = { top: 0, left: 0, x: 0, y: 0 };
 
     const mouseDownHandler = function (e) {
-        ele.style.cursor = 'grabbing';
+        ele.style.cursor = 'all-scroll';
         ele.style.userSelect = 'none';
 
         pos = {
