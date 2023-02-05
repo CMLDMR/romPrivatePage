@@ -11,6 +11,7 @@ namespace City{
 class ControlPanel;
 class CityManager;
 class AssetsManager;
+class TaskManager;
 
 class CityMap : public Wt::WContainerWidget
 {
@@ -27,6 +28,7 @@ public:
     CityManager* mCityManager;
 
     AssetsManager* mAssetsManager;
+    TaskManager *mTaskManager;
 
 };
 
