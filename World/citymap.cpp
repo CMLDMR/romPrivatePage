@@ -6,9 +6,12 @@
 #include <random>
 #include <utility/style.h>
 
+
+#include "City/controlpanel.h"
+
 using namespace Wt;
 
-CityMap::CityMap()
+City::CityMap::CityMap()
 {
 
     this->setPositionScheme(PositionScheme::Fixed);
@@ -19,6 +22,9 @@ CityMap::CityMap()
     this->setScrollVisibilityEnabled(false);
     this->setOverflow(Overflow::Hidden);
     this->setId("citymap");
+
+    mControlPanel = this->addNew<ControlPanel>();
+
 
 
     mMap = this->addNew<WContainerWidget>();
@@ -111,7 +117,7 @@ CityMap::CityMap()
 
 }
 
-void CityMap::addBuild(const int x, const int y, const std::string &assetPath, const int width, const int height)
+void City::CityMap::addBuild(const int x, const int y, const std::string &assetPath, const int width, const int height)
 {
     auto building = mMap->addNew<WContainerWidget>();
     building->setPositionScheme(PositionScheme::Absolute);

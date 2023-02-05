@@ -13,7 +13,9 @@ MainApplication::MainApplication(const WEnvironment &env)
     Wt::WApplication::require("script/script.js");
 
 //    mWorld = root()->addNew<World>();
-    mCityMap = root()->addNew<CityMap>();
 
-    mControlPanel = root()->addNew<ControlPanelWidget>();
+
+    mCityMap = root()->addNew<City::CityMap>();
+
+//    mControlPanel = root()->addNew<ControlPanelWidget>();
 }
