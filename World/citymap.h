@@ -9,6 +9,7 @@
 namespace City{
 
 class ControlPanel;
+class CityManager;
 
 class CityMap : public Wt::WContainerWidget
 {
@@ -22,7 +23,7 @@ public:
     Wt::WContainerWidget* mMap;
 
     ControlPanel* mControlPanel;
-
+    CityManager* mCityManager;
 
 
 };

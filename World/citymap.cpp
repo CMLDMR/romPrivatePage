@@ -8,6 +8,7 @@
 
 
 #include "City/controlpanel.h"
+#include "City/citymanager.h"
 
 using namespace Wt;
 
@@ -24,6 +25,7 @@ City::CityMap::CityMap()
     this->setId("citymap");
 
     mControlPanel = this->addNew<ControlPanel>();
+    mCityManager = this->addNew<CityManager>();
 
 
 
