@@ -10,6 +10,7 @@ namespace City{
 
 class ControlPanel;
 class CityManager;
+class AssetsManager;
 
 class CityMap : public Wt::WContainerWidget
 {
@@ -25,6 +26,7 @@ public:
     ControlPanel* mControlPanel;
     CityManager* mCityManager;
 
+    AssetsManager* mAssetsManager;
 
 };
 

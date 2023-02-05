@@ -9,6 +9,7 @@
 
 #include "City/controlpanel.h"
 #include "City/citymanager.h"
+#include "City/assetsmanager.h"
 
 using namespace Wt;
 
@@ -22,14 +23,25 @@ City::CityMap::CityMap()
     this->setContentAlignment(AlignmentFlag::Center);
     this->setScrollVisibilityEnabled(false);
     this->setOverflow(Overflow::Hidden);
-    this->setId("citymap");
+//    this->setId("citymap");
 
     mControlPanel = this->addNew<ControlPanel>();
     mCityManager = this->addNew<CityManager>();
+    mAssetsManager = this->addNew<AssetsManager>();
 
 
 
-    mMap = this->addNew<WContainerWidget>();
+    auto cityContainer = this->addNew<WContainerWidget>();
+    cityContainer->setPositionScheme(PositionScheme::Absolute);
+    cityContainer->setWidth(WLength("100%"));
+    cityContainer->setHeight(WLength("100%"));
+    cityContainer->setOffsets(0,Side::Left|Side::Top);
+    cityContainer->setScrollVisibilityEnabled(false);
+    cityContainer->setOverflow(Overflow::Hidden);
+    cityContainer->setId("citymap");
+
+
+    mMap = cityContainer->addNew<WContainerWidget>();
     mMap->setWidth(3000);
     mMap->setHeight(2000);
     mMap->setPositionScheme(PositionScheme::Relative);
