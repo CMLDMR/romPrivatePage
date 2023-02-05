@@ -88,4 +88,12 @@ ControlPanelWidget::ControlPanelWidget()
     helpContainer->decorationStyle().setBackgroundColor(WColor(StandardColor::DarkRed));
     helpContainer->addNew<WText>("Yardım?");
 
+    hLayout->addSpacing(15);
+
+    auto worldContainer = hLayout->addWidget(std::make_unique<WContainerWidget>());
+    worldContainer->setWidth(100);
+    worldContainer->setHeight(70);
+    worldContainer->decorationStyle().setBackgroundColor(WColor(StandardColor::DarkYellow));
+    worldContainer->addNew<WText>("Dünya");
+
 }
