@@ -35,23 +35,32 @@ AssetsManager::AssetsManager()
     container->setWidth(WLength("100%"));
 
 
-    auto gLaoyut = container->setLayout(std::make_unique<WGridLayout>());
+    mGLayout = container->setLayout(std::make_unique<WGridLayout>());
 
 
-    auto anaBina = gLaoyut->addWidget(std::make_unique<WebWidget::Building::MainBuilding>(),0,0,AlignmentFlag::Justify);
-    anaBina->setWidth(100);
-    anaBina->setHeight(100);
-    anaBina->setMaximumSize(100,100);
+    this->addBuildMenu<WebWidget::Building::MainBuilding>(0,0);
+    this->addBuildMenu<WebWidget::Building::CastleBuilding>(0,1);
+    this->addBuildMenu<WebWidget::Building::HouseBuilding>(0,2);
 
-    auto anaBina1 = gLaoyut->addWidget(std::make_unique<WebWidget::Building::CastleBuilding>(),0,1,AlignmentFlag::Justify);
-    anaBina1->setWidth(100);
-    anaBina1->setHeight(100);
-    anaBina1->setMaximumSize(100,100);
+}
 
-    auto anaBina2 = gLaoyut->addWidget(std::make_unique<WebWidget::Building::HouseBuilding>(),0,2,AlignmentFlag::Justify);
+Wt::Signal<NoClass> &AssetsManager::SelectedBuild()
+{
+    return _selectedBuild;
+}
+
+template<typename T>
+void AssetsManager::addBuildMenu(const int &x, const int &y)
+{
+    auto anaBina2 = mGLayout->addWidget(std::make_unique<T>(true),x,y,AlignmentFlag::Justify);
     anaBina2->setWidth(100);
     anaBina2->setHeight(100);
     anaBina2->setMaximumSize(100,100);
+
+    anaBina2->clicked().connect([=](){
+        std::cout << "Bina: " << anaBina2->itemName() << "\n";
+    });
+
 
 }
 

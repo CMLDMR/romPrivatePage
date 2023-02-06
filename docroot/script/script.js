@@ -8,12 +8,12 @@ function handDrag(){
     console.log("DOM element Loaded");
 
     const ele = document.getElementById('citymap');
-    ele.style.cursor = 'grab';
+    ele.style.cursor = 'crosshair';
 
     let pos = { top: 0, left: 0, x: 0, y: 0 };
 
     const mouseDownHandler = function (e) {
-        ele.style.cursor = 'all-scroll';
+        ele.style.cursor = 'grabbing';
         ele.style.userSelect = 'none';
 
         pos = {
@@ -39,7 +39,7 @@ function handDrag(){
     };
 
     const mouseUpHandler = function () {
-        ele.style.cursor = 'grab';
+        ele.style.cursor = 'crosshair';
         ele.style.removeProperty('user-select');
 
         document.removeEventListener('mousemove', mouseMoveHandler);
