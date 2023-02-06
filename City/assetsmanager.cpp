@@ -7,7 +7,8 @@
 #include "utility/style.h"
 
 
-#include "Widget/web/city/mainbuilding.h"
+#include "Widget/web/city/building/mainbuilding.h"
+#include "Widget/web/city/building/castlebuilding.h"
 
 using namespace Wt;
 
@@ -36,15 +37,15 @@ AssetsManager::AssetsManager()
     auto gLaoyut = container->setLayout(std::make_unique<WGridLayout>());
 
 
-    auto anaBina = gLaoyut->addWidget(std::make_unique<WebWidget::MainBuilding>(),0,0,AlignmentFlag::Justify);
+    auto anaBina = gLaoyut->addWidget(std::make_unique<WebWidget::Building::MainBuilding>(),0,0,AlignmentFlag::Justify);
     anaBina->setWidth(100);
     anaBina->setHeight(100);
     anaBina->setMaximumSize(100,100);
 
-//    auto anaBina1 = gLaoyut->addWidget(std::make_unique<WebWidget::MainBuilding>(),0,1,AlignmentFlag::Justify);
-//    anaBina1->setWidth(100);
-//    anaBina1->setHeight(100);
-//    anaBina1->setMaximumSize(100,100);
+    auto anaBina1 = gLaoyut->addWidget(std::make_unique<WebWidget::Building::CastleBuilding>(),0,1,AlignmentFlag::Justify);
+    anaBina1->setWidth(100);
+    anaBina1->setHeight(100);
+    anaBina1->setMaximumSize(100,100);
 
 //    auto anaBina2 = gLaoyut->addWidget(std::make_unique<WebWidget::MainBuilding>(),0,2,AlignmentFlag::Justify);
 //    anaBina2->setWidth(100);

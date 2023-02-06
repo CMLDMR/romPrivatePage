@@ -1,18 +1,16 @@
-#include "mainbuilding.h"
+#include "castlebuilding.h"
 
 #include "utility/style.h"
 
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WText.h>
 
-using namespace Wt;
-
-
 namespace WebWidget {
+namespace Building {
 
-MainBuilding::MainBuilding()
+CastleBuilding::CastleBuilding()
 {
-    this->setAttributeValue(Style::style,Style::background::url("b007.png")
+    this->setAttributeValue(Style::style,Style::background::url("b002.png")
                             +Style::background::size::contain
                             +Style::background::repeat::norepeat
                             +Style::background::position::center_center);
@@ -23,9 +21,9 @@ MainBuilding::MainBuilding()
 
 
     auto container = vLayout->addWidget(std::make_unique<Wt::WContainerWidget>());
-    container->setAttributeValue(Style::style,Style::background::color::rgba(75,156,134)+Style::color::color(Style::color::White::AliceBlue));
-    container->addNew<WText>("Ana Bina");
-
+    container->setAttributeValue(Style::style,Style::background::color::rgba(100,156,134)+Style::color::color(Style::color::White::AliceBlue));
+    container->addNew<Wt::WText>("Kale");
 }
 
+} // namespace Building
 } // namespace WebWidget
