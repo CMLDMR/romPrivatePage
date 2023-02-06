@@ -12,7 +12,7 @@ namespace Building {
 class CastleBuilding : public Assets::CastleBuilding , public Wt::WContainerWidget, public Utility::Utility
 {
 public:
-    CastleBuilding();
+    CastleBuilding(const bool buildMenu = false);
 };
 
 } // namespace Building

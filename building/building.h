@@ -9,7 +9,7 @@ namespace Building{
 class Building : public GameCore::Item
 {
 public:
-    Building(){}
+    Building(const std::string &_buildingName):GameCore::Item(_buildingName){}
 
 private:
 

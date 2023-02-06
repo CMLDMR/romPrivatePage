@@ -11,6 +11,8 @@
 #include "City/citymanager.h"
 #include "City/assetsmanager.h"
 #include "City/taskmanager.h"
+#include "Widget/web/city/building/castlebuilding.h"
+#include "Widget/web/city/building/mainbuilding.h"
 
 using namespace Wt;
 
@@ -57,77 +59,34 @@ City::CityMap::CityMap()
     auto coorText = addNew<WText>();
     coorText->setPositionScheme(PositionScheme::Absolute);
     coorText->setOffsets(0,Side::Left|Side::Bottom);
+    coorText->setAttributeValue(Style::style,Style::background::color::color(Style::color::Green::DarkCyan)+Style::color::color(Style::color::White::AliceBlue));
 
     this->doJavaScript("handDrag();");
 
 
-//    mMap->mouseMoved().connect([=]( const Wt::WMouseEvent &event ){
-//        coorText->setText(WString("{1} {2}").arg(event.widget().x).arg(event.widget().y));
-//    });
+    mMap->mouseMoved().connect([=]( const Wt::WMouseEvent &event ){
+        coorText->setText(WString("{1} {2}").arg(event.widget().x).arg(event.widget().y));
+        mDragged = true;
+    });
 
 
 
 //    return;
     mMap->mouseWentDown().connect([=]( const Wt::WMouseEvent &event){
         std::cout << event.widget().x << " " << event.widget().y << "\n";
+//        this->addBuild(event.widget().x,event.widget().y,WebWidget::Building::CastleBuilding());
+        mDragged = false;
+    });
+
+    mMap->mouseWentUp().connect([=]( const Wt::WMouseEvent &event){
+        std::cout << event.widget().x << " " << event.widget().y << "\n";
+
+        if( !mDragged ){
+            this->addBuild(event.widget().x,event.widget().y,WebWidget::Building::CastleBuilding());
+        }
     });
 
 
-    this->addBuild(200,480,"b001.png",72,57);
-    this->addBuild(640,480,"b002.png",123,121);
-    this->addBuild(1280,250,"b003.png",62,49);
-    this->addBuild(100,780,"b004.png",58,74);
-
-
-//    struct BuildItem{
-//        std::string path;
-//        int width;
-//        int height;
-//    };
-
-
-//    std::vector<BuildItem> list;
-
-//    BuildItem item1{"b001.png",72,57};
-//    BuildItem item2{"b002.png",123,121};
-//    BuildItem item3{"b003.png",62,49};
-//    BuildItem item4{"b004.png",58,74};
-//    BuildItem item5{"b005.png",49,58};
-//    BuildItem item6{"b006.png",67,48};
-//    BuildItem item7{"b007.png",137,109};
-//    BuildItem item8{"b008.png",67,60};
-//    BuildItem item9{"b009.png",67,73};
-//    BuildItem item10{"b010.png",63,53};
-//    BuildItem item11{"b011.png",74,56};
-//    BuildItem item12{"b012.png",49,45};
-//    BuildItem item13{"b013.png",71,62};
-
-//    list.emplace_back(item1);
-//    list.emplace_back(item2);
-//    list.emplace_back(item3);
-//    list.emplace_back(item4);
-//    list.emplace_back(item5);
-//    list.emplace_back(item6);
-//    list.emplace_back(item7);
-//    list.emplace_back(item8);
-//    list.emplace_back(item9);
-//    list.emplace_back(item10);
-//    list.emplace_back(item11);
-//    list.emplace_back(item12);
-//    list.emplace_back(item13);
-
-
-//    for( int i = 0 ; i < 500 ; i++ ){
-
-//        std::random_device r;
-
-//        std::default_random_engine e1(r());
-//        std::uniform_int_distribution<int> uniform_dist(150, 1000);
-//        int x = uniform_dist(e1);
-//        int y = uniform_dist(e1);
-
-//        this->addBuild((x*i)%2800+100,(y*i)%1800+100,list[i%list.size()].path,list[i%list.size()].width,list[i%list.size()].height);
-//    }
 
 
 }
@@ -145,5 +104,18 @@ void City::CityMap::addBuild(const int x, const int y, const std::string &assetP
 
     building->clicked().connect([=](){
        std::cout << assetPath << "\n";
+    });
+}
+
+void City::CityMap::addBuild(const int &x, const int &y, const Building::Building &_building)
+{
+    auto building = mMap->addNew<WebWidget::Building::MainBuilding>();
+    building->setPositionScheme(PositionScheme::Absolute);
+    building->setOffsets(y-building->assetHeight()/2,Side::Top);
+    building->setOffsets(x-building->assetWidth()/2,Side::Left);
+//    building->addStyleClass("buildItem");
+
+    building->clicked().connect([=](){
+       std::cout << building->itemName() << "\n";
     });
 }

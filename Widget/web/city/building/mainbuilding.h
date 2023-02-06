@@ -6,12 +6,17 @@
 
 #include <Wt/WContainerWidget.h>
 
+
 namespace WebWidget {
 namespace Building {
 class MainBuilding : public Assets::MainBuilding , public Wt::WContainerWidget, public Utility::Utility
 {
 public:
-    MainBuilding();
+    MainBuilding(const bool buildMenu = false);
+
+
+
+
 };
 
 }

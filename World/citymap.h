@@ -2,7 +2,7 @@
 #define CITYMAP_H
 
 #include <Wt/WContainerWidget.h>
-#include <mutex>
+#include <building/building.h>
 
 
 
@@ -22,6 +22,8 @@ public:
                    const std::string &assetPath,
                    const int width,const int height);
 
+    void addBuild(const int &x , const int &y, const Building::Building &_building );
+
     Wt::WContainerWidget* mMap;
 
     ControlPanel* mControlPanel;
@@ -29,6 +31,8 @@ public:
 
     AssetsManager* mAssetsManager;
     TaskManager *mTaskManager;
+
+    bool mDragged = false;
 
 };
 
