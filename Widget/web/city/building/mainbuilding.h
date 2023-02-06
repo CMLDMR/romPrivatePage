@@ -7,13 +7,14 @@
 #include <Wt/WContainerWidget.h>
 
 namespace WebWidget {
-
+namespace Building {
 class MainBuilding : public Assets::MainBuilding , public Wt::WContainerWidget, public Utility::Utility
 {
 public:
     MainBuilding();
 };
 
+}
 } // namespace WebWidget
 
 #endif // WEBWIDGET_MAINBUILDING_H
