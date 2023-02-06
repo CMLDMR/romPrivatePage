@@ -10,7 +10,7 @@ namespace Building {
 
 CastleBuilding::CastleBuilding()
 {
-    this->setAttributeValue(Style::style,Style::background::url("b002.png")
+    this->setAttributeValue(Style::style,Style::background::url("assets/building/castlebuilding.png")
                             +Style::background::size::contain
                             +Style::background::repeat::norepeat
                             +Style::background::position::center_center);

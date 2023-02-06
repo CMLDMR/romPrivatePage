@@ -9,6 +9,7 @@
 
 #include "Widget/web/city/building/mainbuilding.h"
 #include "Widget/web/city/building/castlebuilding.h"
+#include "Widget/web/city/building/housebuilding.h"
 
 using namespace Wt;
 
@@ -47,10 +48,10 @@ AssetsManager::AssetsManager()
     anaBina1->setHeight(100);
     anaBina1->setMaximumSize(100,100);
 
-//    auto anaBina2 = gLaoyut->addWidget(std::make_unique<WebWidget::MainBuilding>(),0,2,AlignmentFlag::Justify);
-//    anaBina2->setWidth(100);
-//    anaBina2->setHeight(100);
-//    anaBina2->setMaximumSize(100,100);
+    auto anaBina2 = gLaoyut->addWidget(std::make_unique<WebWidget::Building::HouseBuilding>(),0,2,AlignmentFlag::Justify);
+    anaBina2->setWidth(100);
+    anaBina2->setHeight(100);
+    anaBina2->setMaximumSize(100,100);
 
 }
 

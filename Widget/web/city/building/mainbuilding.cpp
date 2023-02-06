@@ -12,7 +12,7 @@ namespace WebWidget {
 
 Building::MainBuilding::MainBuilding()
 {
-    this->setAttributeValue(Style::style,Style::background::url("b007.png")
+    this->setAttributeValue(Style::style,Style::background::url("assets/building/mainbuilding.png")
                             +Style::background::size::contain
                             +Style::background::repeat::norepeat
                             +Style::background::position::center_center);
