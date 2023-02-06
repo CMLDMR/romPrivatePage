@@ -10,7 +10,6 @@ class World;
 namespace City{
 class CityMap;
 }
-class ControlPanelWidget;
 
 class MainApplication : public WApplication
 {
@@ -21,7 +20,6 @@ public:
 private:
     World* mWorld;
     City::CityMap* mCityMap;
-    ControlPanelWidget* mControlPanel;
 };
 
 #endif // MAINAPPLICATION_H

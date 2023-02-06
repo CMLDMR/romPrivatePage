@@ -13,15 +13,15 @@ public:
     World();
 
 
-    bool addItem(const int &row , const int &col );
+//    bool addItem(const int &row , const int &col );
 
-    bool addTestItem(const int x , const int y );
+//    bool addTestItem(const int x , const int y );
 
-    bool addBuilding(std::unique_ptr<Building> building );
+//    bool addBuilding(std::unique_ptr<Building> building );
 
 
-private:
-    Wt::WContainerWidget* mWorld;
+//private:
+//    Wt::WContainerWidget* mWorld;
 
 
 };
