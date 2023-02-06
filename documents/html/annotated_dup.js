@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "Assets", null, [
+      [ "CastleBuilding", "class_assets_1_1_castle_building.html", null ],
       [ "MainBuilding", "class_assets_1_1_main_building.html", null ]
     ] ],
     [ "Building", null, [
@@ -20,7 +21,10 @@ var annotated_dup =
       [ "Utility", "class_utility_1_1_utility.html", null ]
     ] ],
     [ "WebWidget", null, [
-      [ "MainBuilding", "class_web_widget_1_1_main_building.html", null ]
+      [ "Building", null, [
+        [ "CastleBuilding", "class_web_widget_1_1_building_1_1_castle_building.html", null ],
+        [ "MainBuilding", "class_web_widget_1_1_building_1_1_main_building.html", null ]
+      ] ]
     ] ],
     [ "MainApplication", "class_main_application.html", null ],
     [ "ShapeWidget", "class_shape_widget.html", null ],
