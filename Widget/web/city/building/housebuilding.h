@@ -3,16 +3,22 @@
 
 #include <City/assets/house.h>
 
-#include <Wt/WContainerWidget.h>
+#include "Widget/web/city/building/basewidget.h"
 
 
 namespace WebWidget {
 namespace Building {
 
-class HouseBuilding : public Assets::House, public Wt::WContainerWidget
+class HouseBuilding : public Assets::House, public BaseWidget
 {
 public:
     HouseBuilding(const bool buildMenu = false);
+
+    Wt::Signal<::Building::Type,bool> &SelectedBuild();
+
+private:
+
+    Wt::Signal<::Building::Type,bool> _selectedBuild;
 };
 
 } // namespace Building

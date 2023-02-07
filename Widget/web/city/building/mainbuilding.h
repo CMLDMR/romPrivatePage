@@ -5,11 +5,15 @@
 #include "utility/utility.h"
 
 #include <Wt/WContainerWidget.h>
+#include "Widget/web/city/building/basewidget.h"
+
+#include <list>
 
 
 namespace WebWidget {
 namespace Building {
-class MainBuilding : public Assets::MainBuilding , public Wt::WContainerWidget, public Utility::Utility
+
+class MainBuilding : public Assets::MainBuilding , public BaseWidget, public Utility::Utility
 {
 public:
     MainBuilding(const bool buildMenu = false);
@@ -17,6 +21,12 @@ public:
 
 
 
+
+    Wt::Signal<::Building::Type,bool> &SelectedBuild();
+
+private:
+
+    Wt::Signal<::Building::Type,bool> _selectedBuild;
 };
 
 }
