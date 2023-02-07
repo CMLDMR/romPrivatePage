@@ -32,6 +32,8 @@ public:
 
     std::tuple<bool,Building::Type> selected() const;
 
+    void unSelectAll();
+
 private:
 
     bool mSelected;

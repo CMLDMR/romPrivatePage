@@ -50,6 +50,14 @@ std::tuple<bool, Building::Type> AssetsManager::selected() const
     return std::make_tuple(mSelected,mSelectedType);
 }
 
+void AssetsManager::unSelectAll()
+{
+    for( auto &item : mBuildList ){
+        item->setSelected(false);
+    }
+    mSelected = false;
+}
+
 
 
 template<typename T>
@@ -71,11 +79,13 @@ void AssetsManager::addBuildMenu(const int &x, const int &y)
             item->setSelected(false);
         }
 
-
         if( !isSelected ){
             buildObjPtr->setSelected(true);
+            mSelected = true;
+            mSelectedType = buildObjPtr->buildType();
+        }else{
+            mSelected = false;
         }
-
     });
 
 
