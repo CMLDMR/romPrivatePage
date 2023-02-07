@@ -78,31 +78,30 @@ City::CityMap::CityMap()
     });
 
     mMap->mouseWentUp().connect([=]( const Wt::WMouseEvent &event){
-        if( !mDragged ){
+
             auto [selected,selectedType] = mAssetsManager->selected();
-
             if( selected ){
-
                 switch (selectedType) {
-                case Building::Type::main:
-                    this->addBuild(event.widget().x,event.widget().y,WebWidget::Building::MainBuilding());
 
+                case Building::Type::main:
+                    this->addBuild<WebWidget::Building::MainBuilding>(event.widget().x,event.widget().y);
                     break;
+
                 case Building::Type::castle:
-                    this->addBuild(event.widget().x,event.widget().y,WebWidget::Building::CastleBuilding());
+                    this->addBuild<WebWidget::Building::CastleBuilding>(event.widget().x,event.widget().y);
 
                     break;
                 case Building::Type::house:
-                    this->addBuild(event.widget().x,event.widget().y,WebWidget::Building::HouseBuilding());
+                    this->addBuild<WebWidget::Building::HouseBuilding>(event.widget().x,event.widget().y);
 
                     break;
                 default:
                     break;
                 }
 
-
+                mAssetsManager->unSelectAll();
             }
-        }
+
     });
 
 
@@ -126,9 +125,11 @@ void City::CityMap::addBuild(const int x, const int y, const std::string &assetP
     });
 }
 
-void City::CityMap::addBuild(const int &x, const int &y, const Building::Building &_building)
+
+template<typename T>
+void City::CityMap::addBuild(const int &x, const int &y)
 {
-    auto building = mMap->addNew<WebWidget::Building::MainBuilding>();
+    auto building = mMap->addNew<T>();
     building->setPositionScheme(PositionScheme::Absolute);
     building->setOffsets(y-building->assetHeight()/2,Side::Top);
     building->setOffsets(x-building->assetWidth()/2,Side::Left);

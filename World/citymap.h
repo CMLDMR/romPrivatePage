@@ -22,7 +22,8 @@ public:
                    const std::string &assetPath,
                    const int width,const int height);
 
-    void addBuild(const int &x , const int &y, const Building::Building &_building );
+    template<typename T>
+    void addBuild(const int &x , const int &y );
 
     Wt::WContainerWidget* mMap;
 
