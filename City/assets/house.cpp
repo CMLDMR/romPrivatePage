@@ -7,6 +7,8 @@ House::House()
 {
     this->setAssetPath("assets/building/house1building.png");
     this->setAssetsGeometry(266,216);
+    this->mBuildType = ::Building::Type::house;
+
 }
 
 } // namespace Assets

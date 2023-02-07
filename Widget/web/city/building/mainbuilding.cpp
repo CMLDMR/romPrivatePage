@@ -4,6 +4,7 @@
 
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WText.h>
+#include <Wt/WCssDecorationStyle.h>
 
 using namespace Wt;
 
@@ -15,7 +16,8 @@ Building::MainBuilding::MainBuilding(const bool buildMenu)
     this->setAttributeValue(Style::style,Style::background::url(this->assetPath())
                             +Style::background::size::contain
                             +Style::background::repeat::norepeat
-                            +Style::background::position::center_center);
+                            +Style::background::position::center_center
+                            +Style::Border::border("1px solid black"));
     if( buildMenu ){
 
         auto vLayout = this->setLayout(std::make_unique<Wt::WVBoxLayout>());
@@ -29,8 +31,7 @@ Building::MainBuilding::MainBuilding(const bool buildMenu)
         this->setWidth(this->assetWidth());
         this->setHeight(this->assetHeight());
     }
-
-
+    this->decorationStyle().setCursor(Wt::Cursor::PointingHand);
 }
 
 } // namespace WebWidget

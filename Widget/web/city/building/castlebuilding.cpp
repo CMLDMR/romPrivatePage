@@ -4,6 +4,7 @@
 
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WText.h>
+#include <Wt/WCssDecorationStyle.h>
 
 namespace WebWidget {
 namespace Building {
@@ -27,6 +28,8 @@ CastleBuilding::CastleBuilding(const bool buildMenu)
         this->setWidth(this->assetWidth());
         this->setHeight(this->assetHeight());
     }
+
+    this->decorationStyle().setCursor(Wt::Cursor::PointingHand);
 
 }
 

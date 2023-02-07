@@ -9,6 +9,10 @@ class CastleBuilding : public Building::Building
 {
 public:
     CastleBuilding();
+
+
+private:
+    friend class Building::Building;
 };
 
 } // namespace Assets
