@@ -3,8 +3,11 @@
 
 #include <Wt/WContainerWidget.h>
 #include <Wt/WSignal.h>
+#include "building/building.h"
+#include "Widget/web/city/building/basewidget.h"
 
-
+#include <tuple>
+#include <list>
 
 namespace Wt{
 class WGridLayout;
@@ -12,6 +15,7 @@ class WGridLayout;
 
 
 namespace City {
+
 
 class AssetsManager : public Wt::WContainerWidget
 {
@@ -26,10 +30,14 @@ public:
     Wt::WGridLayout* mGLayout;
 
 
-    Wt::Signal<Wt::NoClass> &SelectedBuild();
+    std::tuple<bool,Building::Type> selected() const;
+
 private:
 
-    Wt::Signal<Wt::NoClass> _selectedBuild;
+    bool mSelected;
+    Building::Type mSelectedType;
+
+    std::list<WebWidget::Building::BaseWidget*> mBuildList;
 
 
 };

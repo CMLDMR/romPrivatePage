@@ -2,7 +2,7 @@
 #define BUILDING_H
 
 #include "item.h"
-
+#include <ostream>
 namespace Assets {
     class CastleBuilding;
     class House;
@@ -18,6 +18,23 @@ enum Type{
     house
 };
 
+//std::ostream& operator<<( std::ostream& ostream , const Type type ){
+
+//    switch (type) {
+//    case Type::castle:
+//        ostream << "Building::Type::castle";
+//        break;
+//    case Type::main:
+//        ostream << "Building::Type::main";
+//    case Type::house:
+//        ostream << "Building::Type::house";
+//        break;
+//    default:
+//        break;
+//    }
+
+//    return ostream;
+//}
 
 class Building : public GameCore::Item
 {

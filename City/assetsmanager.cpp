@@ -42,23 +42,40 @@ AssetsManager::AssetsManager()
     this->addBuildMenu<WebWidget::Building::CastleBuilding>(0,1);
     this->addBuildMenu<WebWidget::Building::HouseBuilding>(0,2);
 
+    mSelected = false;
 }
 
-Wt::Signal<NoClass> &AssetsManager::SelectedBuild()
+std::tuple<bool, Building::Type> AssetsManager::selected() const
 {
-    return _selectedBuild;
+    return std::make_tuple(mSelected,mSelectedType);
 }
+
+
 
 template<typename T>
 void AssetsManager::addBuildMenu(const int &x, const int &y)
 {
-    auto anaBina2 = mGLayout->addWidget(std::make_unique<T>(true),x,y,AlignmentFlag::Justify);
-    anaBina2->setWidth(100);
-    anaBina2->setHeight(100);
-    anaBina2->setMaximumSize(100,100);
+    auto buildObj = std::make_unique<T>(true);
+    auto buildObjPtr = buildObj.get();
+    mGLayout->addWidget(std::move(buildObj),x,y,AlignmentFlag::Justify);
+    buildObjPtr->setWidth(100);
+    buildObjPtr->setHeight(100);
+    buildObjPtr->setMaximumSize(100,100);
 
-    anaBina2->clicked().connect([=](){
-        std::cout << "Bina: " << anaBina2->itemName() << "\n";
+    mBuildList.push_back(buildObjPtr);
+
+
+    buildObjPtr->clicked().connect([=](){
+        bool isSelected = buildObjPtr->selected();
+        for( auto &item : mBuildList ){
+            item->setSelected(false);
+        }
+
+
+        if( !isSelected ){
+            buildObjPtr->setSelected(true);
+        }
+
     });
 
 

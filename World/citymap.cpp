@@ -12,6 +12,7 @@
 #include "City/assetsmanager.h"
 #include "City/taskmanager.h"
 #include "Widget/web/city/building/castlebuilding.h"
+#include "Widget/web/city/building/housebuilding.h"
 #include "Widget/web/city/building/mainbuilding.h"
 
 using namespace Wt;
@@ -73,16 +74,34 @@ City::CityMap::CityMap()
 
 //    return;
     mMap->mouseWentDown().connect([=]( const Wt::WMouseEvent &event){
-        std::cout << event.widget().x << " " << event.widget().y << "\n";
-//        this->addBuild(event.widget().x,event.widget().y,WebWidget::Building::CastleBuilding());
         mDragged = false;
     });
 
     mMap->mouseWentUp().connect([=]( const Wt::WMouseEvent &event){
-        std::cout << event.widget().x << " " << event.widget().y << "\n";
-
         if( !mDragged ){
-            this->addBuild(event.widget().x,event.widget().y,WebWidget::Building::CastleBuilding());
+            auto [selected,selectedType] = mAssetsManager->selected();
+
+            if( selected ){
+
+                switch (selectedType) {
+                case Building::Type::main:
+                    this->addBuild(event.widget().x,event.widget().y,WebWidget::Building::MainBuilding());
+
+                    break;
+                case Building::Type::castle:
+                    this->addBuild(event.widget().x,event.widget().y,WebWidget::Building::CastleBuilding());
+
+                    break;
+                case Building::Type::house:
+                    this->addBuild(event.widget().x,event.widget().y,WebWidget::Building::HouseBuilding());
+
+                    break;
+                default:
+                    break;
+                }
+
+
+            }
         }
     });
 
