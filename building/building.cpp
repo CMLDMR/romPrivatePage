@@ -4,3 +4,7 @@
 
 
 
+Building::Type Building::Building::buildType() const
+{
+    return mBuildType;
+}

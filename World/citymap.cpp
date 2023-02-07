@@ -113,7 +113,6 @@ void City::CityMap::addBuild(const int &x, const int &y, const Building::Buildin
     building->setPositionScheme(PositionScheme::Absolute);
     building->setOffsets(y-building->assetHeight()/2,Side::Top);
     building->setOffsets(x-building->assetWidth()/2,Side::Left);
-//    building->addStyleClass("buildItem");
 
     building->clicked().connect([=](){
        std::cout << building->itemName() << "\n";

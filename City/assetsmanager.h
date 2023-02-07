@@ -4,7 +4,6 @@
 #include <Wt/WContainerWidget.h>
 #include <Wt/WSignal.h>
 
-#include <list>
 
 
 namespace Wt{
@@ -31,8 +30,6 @@ public:
 private:
 
     Wt::Signal<Wt::NoClass> _selectedBuild;
-
-//    std::list<buildType> mBuildType;
 
 
 };

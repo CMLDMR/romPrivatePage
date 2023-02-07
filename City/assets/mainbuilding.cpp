@@ -8,6 +8,9 @@ MainBuilding::MainBuilding()
 
     this->setAssetPath("assets/building/mainbuilding.png");
     this->setAssetsGeometry(124,92);
+
+    this->mBuildType = ::Building::Type::main;
+
 }
 
 } // namespace Assets
