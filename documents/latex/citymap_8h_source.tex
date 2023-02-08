@@ -6,7 +6,7 @@
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CITYMAP\_H}}
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Wt/WContainerWidget.h>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <building/building.h>}}
 \DoxyCodeLine{00006\ }
 \DoxyCodeLine{00007\ }
 \DoxyCodeLine{00008\ }
@@ -26,21 +26,26 @@
 \DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&assetPath,}
 \DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ width,\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ height);}
 \DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ Wt::WContainerWidget*\ mMap;}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_control_panel}{ControlPanel}}*\ mControlPanel;}
-\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_city_manager}{CityManager}}*\ mCityManager;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ addBuild(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&x\ ,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&y\ );}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ Wt::WContainerWidget*\ mMap;}
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_assets_manager}{AssetsManager}}*\ mAssetsManager;}
-\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_task_manager}{TaskManager}}\ *mTaskManager;}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_control_panel}{ControlPanel}}*\ mControlPanel;}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_city_manager}{CityManager}}*\ mCityManager;}
 \DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \};}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \}}
-\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_assets_manager}{AssetsManager}}*\ mAssetsManager;}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_task_manager}{TaskManager}}\ *mTaskManager;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ mDragged\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00038\ \};}
 \DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CITYMAP\_H}}
+\DoxyCodeLine{00040\ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CITYMAP\_H}}
 
 \end{DoxyCode}

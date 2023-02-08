@@ -5,6 +5,9 @@ var hierarchy =
         [ "Assets::CastleBuilding", "class_assets_1_1_castle_building.html", [
           [ "WebWidget::Building::CastleBuilding", "class_web_widget_1_1_building_1_1_castle_building.html", null ]
         ] ],
+        [ "Assets::House", "class_assets_1_1_house.html", [
+          [ "WebWidget::Building::HouseBuilding", "class_web_widget_1_1_building_1_1_house_building.html", null ]
+        ] ],
         [ "Assets::MainBuilding", "class_assets_1_1_main_building.html", [
           [ "WebWidget::Building::MainBuilding", "class_web_widget_1_1_building_1_1_main_building.html", null ]
         ] ]
@@ -23,8 +26,11 @@ var hierarchy =
       [ "City::CityMap", "class_city_1_1_city_map.html", null ],
       [ "City::ControlPanel", "class_city_1_1_control_panel.html", null ],
       [ "City::TaskManager", "class_city_1_1_task_manager.html", null ],
-      [ "WebWidget::Building::CastleBuilding", "class_web_widget_1_1_building_1_1_castle_building.html", null ],
-      [ "WebWidget::Building::MainBuilding", "class_web_widget_1_1_building_1_1_main_building.html", null ],
+      [ "WebWidget::Building::BaseWidget", "class_web_widget_1_1_building_1_1_base_widget.html", [
+        [ "WebWidget::Building::CastleBuilding", "class_web_widget_1_1_building_1_1_castle_building.html", null ],
+        [ "WebWidget::Building::HouseBuilding", "class_web_widget_1_1_building_1_1_house_building.html", null ],
+        [ "WebWidget::Building::MainBuilding", "class_web_widget_1_1_building_1_1_main_building.html", null ]
+      ] ],
       [ "World", "class_world.html", null ]
     ] ],
     [ "Wt::WPaintedWidget", null, [

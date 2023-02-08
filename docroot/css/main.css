@@ -29,7 +29,9 @@
 
 
 .buildItem{
-    cursor: crosshair;
+    /*cursor: crosshair;*/
+
+    border: 1px solid red !important;
 
 }
 

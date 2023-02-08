@@ -2,7 +2,10 @@
 #define CITYMAP_H
 
 #include <Wt/WContainerWidget.h>
+#include <Wt/WImage.h>
+
 #include <building/building.h>
+
 
 
 
@@ -18,9 +21,6 @@ class CityMap : public Wt::WContainerWidget
 public:
     CityMap();
 
-    void addBuild( const int x, const int y,
-                   const std::string &assetPath,
-                   const int width,const int height);
 
     template<typename T>
     void addBuild(const int &x , const int &y );
@@ -34,6 +34,8 @@ public:
     TaskManager *mTaskManager;
 
     bool mDragged = false;
+
+    Wt::WImage* mCityImage;
 
 };
 

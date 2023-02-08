@@ -1,0 +1,39 @@
+\hypertarget{basewidget_8h_source}{}\doxysection{basewidget.\+h}
+\label{basewidget_8h_source}\index{Widget/web/city/building/basewidget.h@{Widget/web/city/building/basewidget.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ WEBWIDGET\_BUILDING\_BASEWIDGET\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ WEBWIDGET\_BUILDING\_BASEWIDGET\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Wt/WContainerWidget.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }WebWidget\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }Building\ \{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_web_widget_1_1_building_1_1_base_widget}{BaseWidget}}\ :\ \textcolor{keyword}{public}\ Wt::WContainerWidget}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_web_widget_1_1_building_1_1_base_widget}{BaseWidget}}(\ );}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_web_widget_1_1_building_1_1_base_widget}{BaseWidget}}\&\ addAttribute(\ \textcolor{keyword}{const}\ std::string\ \&\_attribute\ );}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ removeAttribute(\ \textcolor{keyword}{const}\ std::string\ \&\_attribute\ );}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ containAttribute(\textcolor{keyword}{const}\ std::string\ \&\_attribute)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ togleSelected();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ selected()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ setSelected(\ \textcolor{keywordtype}{bool}\ \_selected\ =\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ std::list<std::string>\ mAttriuteList;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ updateAttribute();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ mSelected\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \}\ \textcolor{comment}{//\ namespace\ Building}}
+\DoxyCodeLine{00031\ \}\ \textcolor{comment}{//\ namespace\ WebWidget}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ WEBWIDGET\_BUILDING\_BASEWIDGET\_H}}
+
+\end{DoxyCode}
