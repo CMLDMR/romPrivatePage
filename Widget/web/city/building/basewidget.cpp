@@ -55,6 +55,8 @@ void BaseWidget::setSelected(bool _selected)
 
 
 
+
+
 void BaseWidget::removeAttribute(const std::string &_attribute)
 {
     for( const auto &item : mAttriuteList ){
@@ -87,6 +89,8 @@ void BaseWidget::togleSelected()
         this->decorationStyle().setBorder(WBorder(BorderStyle::None,BorderWidth::Thin,WColor(StandardColor::Black)));
     }
 }
+
+
 
 
 } // namespace Building

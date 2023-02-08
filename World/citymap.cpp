@@ -2,6 +2,9 @@
 #include <Wt/WCssDecorationStyle.h>
 #include <Wt/WText.h>
 #include <Wt/WString.h>
+#include <Wt/WPoint.h>
+#include <Wt/WPolygonArea.h>
+
 #include <vector>
 #include <random>
 #include <utility/style.h>
@@ -16,6 +19,8 @@
 #include "Widget/web/city/building/mainbuilding.h"
 #include "Widget/web/city/building/farmer.h"
 
+
+
 using namespace Wt;
 
 City::CityMap::CityMap()
@@ -28,7 +33,7 @@ City::CityMap::CityMap()
     this->setContentAlignment(AlignmentFlag::Center);
     this->setScrollVisibilityEnabled(false);
     this->setOverflow(Overflow::Hidden);
-//    this->setId("citymap");
+    //    this->setId("citymap");
 
     mControlPanel = this->addNew<ControlPanel>();
     mCityManager = this->addNew<CityManager>();
@@ -45,6 +50,19 @@ City::CityMap::CityMap()
     cityContainer->setOverflow(Overflow::Hidden);
     cityContainer->setId("citymap");
 
+
+
+
+
+
+
+
+
+
+    //    mMap->addStyleClass("cityMap");
+
+
+
     mCityImage = cityContainer->addNew<WImage>(WLink("cityground1.jpg"));
     mCityImage->setWidth(2000);
     mCityImage->setHeight(2000);
@@ -52,12 +70,14 @@ City::CityMap::CityMap()
     mCityImage->setOffsets(0,Side::Left|Side::Top);
 
 
+
     mMap = cityContainer->addNew<WContainerWidget>();
     mMap->setWidth(2000);
     mMap->setHeight(2000);
-    mMap->setPositionScheme(PositionScheme::Relative);
+    mMap->setOffsets(0,Side::Left|Side::Top);
+    mMap->setPositionScheme(PositionScheme::Absolute);
     mMap->setMaximumSize(2000,2000);
-    mMap->addStyleClass("cityMap");
+
 
     auto coorText = addNew<WText>();
     coorText->setPositionScheme(PositionScheme::Absolute);
@@ -67,15 +87,30 @@ City::CityMap::CityMap()
     this->doJavaScript("handDrag();");
 
 
+    mNewBuildingPlaceAreaWidget = nullptr;
     mMap->mouseMoved().connect([=]( const Wt::WMouseEvent &event ){
         auto [selected,selectedType] = mAssetsManager->selected();
 
         if( selected ){
+                switch (selectedType) {
 
-            auto javascriptStr = "document.getElementById('"+mMap->id()+"').style.cursor = 'url(http://127.0.0.1:8085/assets/building/pointer64.png),auto'";
-            LOG << javascriptStr << "\n";
-            this->doJavaScript(javascriptStr);
+                case Building::Type::main:
+                    this->addToCursor<WebWidget::Building::MainBuilding>(event.widget().x,event.widget().y);
+                    break;
 
+                case Building::Type::castle:
+                    this->addToCursor<WebWidget::Building::CastleBuilding>(event.widget().x,event.widget().y);
+                    break;
+                case Building::Type::house:
+                    this->addToCursor<WebWidget::Building::HouseBuilding>(event.widget().x,event.widget().y);
+                    break;
+
+                case Building::Type::farmer:
+                    this->addToCursor<WebWidget::Building::Farmer>(event.widget().x,event.widget().y);
+                    break;
+                default:
+                    break;
+                }
         }
 
         coorText->setText(WString("{1} {2}").arg(event.widget().x).arg(event.widget().y));
@@ -84,13 +119,16 @@ City::CityMap::CityMap()
 
 
 
-//    return;
+    //    return;
     mMap->mouseWentDown().connect([=]( const Wt::WMouseEvent &event){
+
+
         mDragged = false;
     });
 
     mMap->mouseWentUp().connect([=]( const Wt::WMouseEvent &event){
 
+        if( event.button() == Wt::WMouseEvent::Button::Left ){
             auto [selected,selectedType] = mAssetsManager->selected();
             if( selected ){
                 switch (selectedType) {
@@ -115,11 +153,18 @@ City::CityMap::CityMap()
                 default:
                     break;
                 }
-
-                mAssetsManager->unSelectAll();
             }
+        }
+
+        mAssetsManager->unSelectAll();
+
+        if( mNewBuildingPlaceAreaWidget ){
+            mMap->removeWidget(mNewBuildingPlaceAreaWidget);
+            mNewBuildingPlaceAreaWidget = nullptr;
+        }
 
     });
+
 
 }
 
@@ -134,6 +179,16 @@ void City::CityMap::addBuild(const int &x, const int &y)
     building->setOffsets(x-building->assetWidth()/2,Side::Left);
 
     building->clicked().connect([=](){
-       std::cout << building->itemName() << "\n";
+        std::cout << building->itemName() << "\n";
     });
+}
+
+template<typename T>
+void City::CityMap::addToCursor(const int &x, const int &y)
+{
+    if( !mNewBuildingPlaceAreaWidget ){
+        mNewBuildingPlaceAreaWidget = mMap->addWidget(WebWidget::Building::BaseWidget::isRightPlaceToBuild<T>());
+    }
+    mNewBuildingPlaceAreaWidget->setOffsets(y-static_cast<T>(mNewBuildingPlaceAreaWidget).assetHeight()/2,Side::Top);
+    mNewBuildingPlaceAreaWidget->setOffsets(x-static_cast<T>(mNewBuildingPlaceAreaWidget).assetWidth()/2,Side::Left);
 }

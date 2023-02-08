@@ -37,6 +37,10 @@ public:
 
     Wt::WImage* mCityImage;
 
+
+    Wt::WContainerWidget* mNewBuildingPlaceAreaWidget;
+    template<typename T>
+    void addToCursor(const int &x, const int &y);
 };
 
 }

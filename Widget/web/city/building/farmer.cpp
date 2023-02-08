@@ -34,6 +34,7 @@ Farmer::Farmer(const bool buildMenu)
     this->decorationStyle().setCursor(Wt::Cursor::PointingHand);
 }
 
+
 Wt::Signal<::Building::Type, bool> &Farmer::SelectedBuild()
 {
     return _selectedBuild;

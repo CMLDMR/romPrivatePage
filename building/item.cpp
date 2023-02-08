@@ -60,4 +60,26 @@ int Item::assetHeight() const
 }
 
 
+
+std::string Item::acceptedPlaceAreaPath() const
+{
+    return mAcceptedPlaceAreaPath;
+}
+
+void Item::setAcceptedPlaceAreaPath(const std::string &newAcceptedPlaceAreaPath)
+{
+    mAcceptedPlaceAreaPath = newAcceptedPlaceAreaPath;
+}
+
+std::string Item::deniedPlaceAreaPath() const
+{
+    return mDeniedPlaceAreaPath;
+}
+
+void Item::setDeniedPlaceAreaPath(const std::string &newDeniedPlaceAreaPath)
+{
+    mDeniedPlaceAreaPath = newDeniedPlaceAreaPath;
+}
+
+
 } // namespace GameCore

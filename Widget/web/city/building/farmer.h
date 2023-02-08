@@ -15,6 +15,7 @@ class Farmer : public Assets::Farmer , public BaseWidget, public Utility::Utilit
 public:
     Farmer(const bool buildMenu = false);
 
+
     Wt::Signal<::Building::Type,bool> &SelectedBuild();
 
 private:
