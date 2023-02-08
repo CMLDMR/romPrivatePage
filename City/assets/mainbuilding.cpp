@@ -7,7 +7,7 @@ MainBuilding::MainBuilding()
 {
 
     this->setAssetPath("assets/building/mainbuilding.png");
-    this->setAssetsGeometry(124,92);
+    this->setAssetsGeometry(169,109);
 
     this->mBuildType = ::Building::Type::main;
 

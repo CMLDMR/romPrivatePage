@@ -175,9 +175,10 @@ boxfont setfont
 1 boundaspect scale
 (WebWidget::Building::CastleBuilding) cw
 (Assets::CastleBuilding) cw
-(Wt::WContainerWidget) cw
+(WebWidget::Building::BaseWidget) cw
 (Utility::Utility) cw
 (Building::Building) cw
+(Wt::WContainerWidget) cw
 (GameCore::Item) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
@@ -192,9 +193,10 @@ boundx scalefactor div boundy scalefactor div scale
 
  (WebWidget::Building::CastleBuilding) 1.000000 0.000000 box
  (Assets::CastleBuilding) 0.000000 1.000000 box
- (Wt::WContainerWidget) 1.000000 1.000000 box
+ (WebWidget::Building::BaseWidget) 1.000000 1.000000 box
  (Utility::Utility) 2.000000 1.000000 box
  (Building::Building) 0.000000 2.000000 box
+ (Wt::WContainerWidget) 1.000000 2.000000 box
  (GameCore::Item) 0.000000 3.000000 box
 
 % ----- relations -----
@@ -210,10 +212,14 @@ solid
 solid
 1 1.000000 1.000000 in
 solid
+0 1.000000 1.000000 out
+solid
 1 2.000000 1.000000 in
 solid
 1 0.000000 2.000000 in
 solid
 0 0.000000 2.000000 out
+solid
+1 1.000000 2.000000 in
 solid
 1 0.000000 3.000000 in

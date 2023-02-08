@@ -14,6 +14,7 @@
 #include "Widget/web/city/building/castlebuilding.h"
 #include "Widget/web/city/building/housebuilding.h"
 #include "Widget/web/city/building/mainbuilding.h"
+#include "Widget/web/city/building/farmer.h"
 
 using namespace Wt;
 
@@ -44,18 +45,19 @@ City::CityMap::CityMap()
     cityContainer->setOverflow(Overflow::Hidden);
     cityContainer->setId("citymap");
 
+    mCityImage = cityContainer->addNew<WImage>(WLink("cityground1.jpg"));
+    mCityImage->setWidth(2000);
+    mCityImage->setHeight(2000);
+    mCityImage->setPositionScheme(PositionScheme::Absolute);
+    mCityImage->setOffsets(0,Side::Left|Side::Top);
+
 
     mMap = cityContainer->addNew<WContainerWidget>();
-    mMap->setWidth(3000);
+    mMap->setWidth(2000);
     mMap->setHeight(2000);
     mMap->setPositionScheme(PositionScheme::Relative);
-    mMap->setMaximumSize(3000,2000);
+    mMap->setMaximumSize(2000,2000);
     mMap->addStyleClass("cityMap");
-
-    mMap->setAttributeValue(Style::style,Style::background::url("cityground.jpg")
-                            +Style::background::size::cover
-                            +Style::background::repeat::norepeat
-                            +Style::background::position::center_center);
 
     auto coorText = addNew<WText>();
     coorText->setPositionScheme(PositionScheme::Absolute);
@@ -66,6 +68,16 @@ City::CityMap::CityMap()
 
 
     mMap->mouseMoved().connect([=]( const Wt::WMouseEvent &event ){
+        auto [selected,selectedType] = mAssetsManager->selected();
+
+        if( selected ){
+
+            auto javascriptStr = "document.getElementById('"+mMap->id()+"').style.cursor = 'url(http://127.0.0.1:8085/assets/building/pointer64.png),auto'";
+            LOG << javascriptStr << "\n";
+            this->doJavaScript(javascriptStr);
+
+        }
+
         coorText->setText(WString("{1} {2}").arg(event.widget().x).arg(event.widget().y));
         mDragged = true;
     });
@@ -95,6 +107,11 @@ City::CityMap::CityMap()
                     this->addBuild<WebWidget::Building::HouseBuilding>(event.widget().x,event.widget().y);
 
                     break;
+
+                case Building::Type::farmer:
+                    this->addBuild<WebWidget::Building::Farmer>(event.widget().x,event.widget().y);
+
+                    break;
                 default:
                     break;
                 }
@@ -104,26 +121,8 @@ City::CityMap::CityMap()
 
     });
 
-
-
-
 }
 
-void City::CityMap::addBuild(const int x, const int y, const std::string &assetPath, const int width, const int height)
-{
-    auto building = mMap->addNew<WContainerWidget>();
-    building->setPositionScheme(PositionScheme::Absolute);
-    building->setOffsets(y,Side::Top);
-    building->setOffsets(x,Side::Left);
-    building->setAttributeValue("style","background:url("+assetPath+");;background-repeat:no-repeat;");
-    building->setWidth(width);
-    building->setHeight(height);
-    building->addStyleClass("buildItem");
-
-    building->clicked().connect([=](){
-       std::cout << assetPath << "\n";
-    });
-}
 
 
 template<typename T>

@@ -1,0 +1,33 @@
+\hypertarget{housebuilding_8h_source}{}\doxysection{housebuilding.\+h}
+\label{housebuilding_8h_source}\index{Widget/web/city/building/housebuilding.h@{Widget/web/city/building/housebuilding.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ WEBWIDGET\_BUILDING\_HOUSEBUILDING\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ WEBWIDGET\_BUILDING\_HOUSEBUILDING\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <City/assets/house.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Widget/web/city/building/basewidget.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }WebWidget\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }Building\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_web_widget_1_1_building_1_1_house_building}{HouseBuilding}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_assets_1_1_house}{Assets::House}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_web_widget_1_1_building_1_1_base_widget}{BaseWidget}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_web_widget_1_1_building_1_1_house_building}{HouseBuilding}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ buildMenu\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ Wt::Signal<::Building::Type,bool>\ \&SelectedBuild();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ Wt::Signal<::Building::Type,bool>\ \_selectedBuild;}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \}\ \textcolor{comment}{//\ namespace\ Building}}
+\DoxyCodeLine{00025\ \}\ \textcolor{comment}{//\ namespace\ WebWidget}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ WEBWIDGET\_BUILDING\_HOUSEBUILDING\_H}}
+
+\end{DoxyCode}

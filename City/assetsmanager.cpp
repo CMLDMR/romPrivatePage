@@ -10,6 +10,7 @@
 #include "Widget/web/city/building/mainbuilding.h"
 #include "Widget/web/city/building/castlebuilding.h"
 #include "Widget/web/city/building/housebuilding.h"
+#include "Widget/web/city/building/farmer.h"
 
 using namespace Wt;
 
@@ -41,6 +42,7 @@ AssetsManager::AssetsManager()
     this->addBuildMenu<WebWidget::Building::MainBuilding>(0,0);
     this->addBuildMenu<WebWidget::Building::CastleBuilding>(0,1);
     this->addBuildMenu<WebWidget::Building::HouseBuilding>(0,2);
+    this->addBuildMenu<WebWidget::Building::Farmer>(1,0);
 
     mSelected = false;
 }
