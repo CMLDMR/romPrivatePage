@@ -3,6 +3,7 @@
 
 #include "item.h"
 #include <ostream>
+
 namespace Assets {
     class CastleBuilding;
     class House;
@@ -20,23 +21,6 @@ enum Type{
     farmer
 };
 
-//std::ostream& operator<<( std::ostream& ostream , const Type type ){
-
-//    switch (type) {
-//    case Type::castle:
-//        ostream << "Building::Type::castle";
-//        break;
-//    case Type::main:
-//        ostream << "Building::Type::main";
-//    case Type::house:
-//        ostream << "Building::Type::house";
-//        break;
-//    default:
-//        break;
-//    }
-
-//    return ostream;
-//}
 
 class Building : public GameCore::Item
 {
@@ -45,10 +29,17 @@ public:
 
     Type buildType() const;
 
+    void setPosition( const int &x , const int &y );
+    std::pair<int,int> Position() const;
+
+    int xPos() const;
+
+    int yPos() const;
 private:
     Type mBuildType;
 
-
+    int mXPos;
+    int mYPos;
 
 public:
     friend class Assets::CastleBuilding;

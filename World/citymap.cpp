@@ -33,7 +33,6 @@ City::CityMap::CityMap()
     this->setContentAlignment(AlignmentFlag::Center);
     this->setScrollVisibilityEnabled(false);
     this->setOverflow(Overflow::Hidden);
-    //    this->setId("citymap");
 
     mControlPanel = this->addNew<ControlPanel>();
     mCityManager = this->addNew<CityManager>();
@@ -49,18 +48,6 @@ City::CityMap::CityMap()
     cityContainer->setScrollVisibilityEnabled(false);
     cityContainer->setOverflow(Overflow::Hidden);
     cityContainer->setId("citymap");
-
-
-
-
-
-
-
-
-
-
-    //    mMap->addStyleClass("cityMap");
-
 
 
     mCityImage = cityContainer->addNew<WImage>(WLink("cityground1.jpg"));
@@ -83,15 +70,19 @@ City::CityMap::CityMap()
     coorText->setPositionScheme(PositionScheme::Absolute);
     coorText->setOffsets(0,Side::Left|Side::Bottom);
     coorText->setAttributeValue(Style::style,Style::background::color::color(Style::color::Green::DarkCyan)+Style::color::color(Style::color::White::AliceBlue));
-
+    coorText->setZIndex(2201);
     this->doJavaScript("handDrag();");
 
 
     mNewBuildingPlaceAreaWidget = nullptr;
+
+    //TODO: basılıyken Drag Yaptıktan sonra Bırakıyor
     mMap->mouseMoved().connect([=]( const Wt::WMouseEvent &event ){
-        auto [selected,selectedType] = mAssetsManager->selected();
+        const auto &[selected,selectedType] = mAssetsManager->selected();
 
         if( selected ){
+            //TODO: function return a typename?
+
                 switch (selectedType) {
 
                 case Building::Type::main:
@@ -121,8 +112,6 @@ City::CityMap::CityMap()
 
     //    return;
     mMap->mouseWentDown().connect([=]( const Wt::WMouseEvent &event){
-
-
         mDragged = false;
     });
 
@@ -161,6 +150,8 @@ City::CityMap::CityMap()
         if( mNewBuildingPlaceAreaWidget ){
             mMap->removeWidget(mNewBuildingPlaceAreaWidget);
             mNewBuildingPlaceAreaWidget = nullptr;
+//            mNewBuildingPlaceAreaWidget->offset(Side::Bottom).toPixels()
+
         }
 
     });
@@ -177,6 +168,11 @@ void City::CityMap::addBuild(const int &x, const int &y)
     building->setPositionScheme(PositionScheme::Absolute);
     building->setOffsets(y-building->assetHeight()/2,Side::Top);
     building->setOffsets(x-building->assetWidth()/2,Side::Left);
+    building->setPosition(x-building->assetWidth()/2,y-building->assetHeight()/2);
+//    building->setAttributeValue(Style::style,Style::Border::border("1px solid black"));
+
+
+    mBuildList.push_back(building);
 
     building->clicked().connect([=](){
         std::cout << building->itemName() << "\n";

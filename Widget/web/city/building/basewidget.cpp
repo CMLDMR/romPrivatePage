@@ -38,6 +38,8 @@ void BaseWidget::updateAttribute()
     this->setAttributeValue(Style::style,_attribue);
 }
 
+
+
 bool BaseWidget::selected() const
 {
     return mSelected;
@@ -52,6 +54,7 @@ void BaseWidget::setSelected(bool _selected)
         this->decorationStyle().setBorder(WBorder(BorderStyle::None,BorderWidth::Thin,WColor(StandardColor::Black)));
     }
 }
+
 
 
 

@@ -4,6 +4,7 @@
 #include "utility/style.h"
 #include <Wt/WContainerWidget.h>
 
+
 namespace WebWidget {
 namespace Building {
 
@@ -18,14 +19,23 @@ public:
     bool containAttribute(const std::string &_attribute) const;
 
     template<typename T>
-    static std::unique_ptr<T> isRightPlaceToBuild(){
+    static std::unique_ptr<T> isRightPlaceToBuild(const bool collisioned = false){
         auto container = std::make_unique<T>();
         container->setPositionScheme(Wt::PositionScheme::Absolute);
-        container->setAttributeValue(Style::style,Style::background::url(container->acceptedPlaceAreaPath())
-                                                       +Style::background::size::contain
-                                                       +Style::background::position::center_center
-                                                       +Style::background::repeat::norepeat
-                                     +Style::Border::border("1px solid black"));
+        if( collisioned ){
+            container->setAttributeValue(Style::style,Style::background::url(container->deniedPlaceAreaPath())
+                                                           +Style::background::size::contain
+                                                           +Style::background::position::center_center
+                                                           +Style::background::repeat::norepeat
+                                         +Style::Border::border("1px solid black"));
+        }else{
+            container->setAttributeValue(Style::style,Style::background::url(container->acceptedPlaceAreaPath())
+                                                           +Style::background::size::contain
+                                                           +Style::background::position::center_center
+                                                           +Style::background::repeat::norepeat
+                                         +Style::Border::border("1px solid black"));
+        }
+
         return container;
     }
 
@@ -34,10 +44,17 @@ public:
     bool selected() const;
     void setSelected( bool _selected = true );
 
+
+
 private:
     std::list<std::string> mAttriuteList;
     void updateAttribute();
     bool mSelected{false};
+
+
+
+
+
 
 };
 
