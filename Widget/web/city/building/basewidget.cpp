@@ -8,8 +8,11 @@ using namespace Wt;
 namespace WebWidget {
 namespace Building {
 
-BaseWidget::BaseWidget()
+BaseWidget::BaseWidget(const ::Building::Type &_type)
+    : ::Building::Building(_type)
 {
+
+
 
 }
 
@@ -38,6 +41,13 @@ void BaseWidget::updateAttribute()
     this->setAttributeValue(Style::style,_attribue);
 }
 
+BuildingPlaceArea *BaseWidget::placeAbleShape()
+{
+    return mPlaceAbleShape;
+}
+
+
+
 bool BaseWidget::selected() const
 {
     return mSelected;
@@ -52,6 +62,32 @@ void BaseWidget::setSelected(bool _selected)
         this->decorationStyle().setBorder(WBorder(BorderStyle::None,BorderWidth::Thin,WColor(StandardColor::Black)));
     }
 }
+
+void BaseWidget::setPosition(const int &x, const int &y)
+{
+    this->mXPos = x;
+    this->mYPos = y;
+    this->setOffsets(this->mXPos-this->buildingWidth()/2,Side::Left);
+    this->setOffsets(this->mYPos-this->buildingHeight()/2,Side::Top);
+}
+
+std::pair<int, int> BaseWidget::Position() const
+{
+    return std::make_pair(this->mXPos,this->mYPos);
+}
+
+int BaseWidget::xPos() const
+{
+    return mXPos;
+}
+
+int BaseWidget::yPos() const
+{
+    return mYPos;
+}
+
+
+
 
 
 
@@ -87,6 +123,10 @@ void BaseWidget::togleSelected()
         this->decorationStyle().setBorder(WBorder(BorderStyle::None,BorderWidth::Thin,WColor(StandardColor::Black)));
     }
 }
+
+
+
+
 
 
 } // namespace Building

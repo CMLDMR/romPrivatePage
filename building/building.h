@@ -2,16 +2,10 @@
 #define BUILDING_H
 
 #include "item.h"
-#include <ostream>
-namespace Assets {
-    class CastleBuilding;
-    class House;
-    class MainBuilding;
-    class Farmer;
-}
+#include <vector>
+
 
 namespace Building{
-
 
 enum Type{
     main = 0,
@@ -20,45 +14,61 @@ enum Type{
     farmer
 };
 
-//std::ostream& operator<<( std::ostream& ostream , const Type type ){
 
-//    switch (type) {
-//    case Type::castle:
-//        ostream << "Building::Type::castle";
-//        break;
-//    case Type::main:
-//        ostream << "Building::Type::main";
-//    case Type::house:
-//        ostream << "Building::Type::house";
-//        break;
-//    default:
-//        break;
-//    }
-
-//    return ostream;
-//}
+struct Point
+{
+    int x;
+    int y;
+};
 
 class Building : public GameCore::Item
 {
 public:
-    Building(const std::string &_buildingName):GameCore::Item(_buildingName){}
+    Building( const Type &_buildType );
 
     Type buildType() const;
+
+    void setGeometry( const int &width , const int &height );
+
+    int buildingWidth() const;
+    int buildingHeight() const;
+
+    void setBuildType(Type newBuildType);
+
+    std::string buildingName() const;
+
+    std::string assetPath() const;
+
+    std::string acceptedPlaceAreaAssetPath() const;
+
+    std::string deniedPlaceAreaAssetPath() const;
+
+    std::vector<Point> getPolyShape() const;
+
+    std::vector<Point> getPolyShapeToGlobal( const int &x, const int &y ) const;
 
 private:
     Type mBuildType;
 
+    int mAssetWidth;
+    int mAssetHeight;
 
+    std::string mAssetName{"mainbuilding"};
+    std::string mAssetPath{"assets/building/"+mAssetName+".png"};
+    std::string mAcceptedPlaceAreaAssetPath{"assets/building/"+mAssetName+"-"+"accept"+".png"};
+    std::string mDeniedPlaceAreaAssetPath{"assets/building/"+mAssetName+"-"+"deny"+".png"};
 
-public:
-    friend class Assets::CastleBuilding;
-    friend class Assets::House;
-    friend class Assets::MainBuilding;
-    friend class Assets::Farmer;
+    std::string mBuildingName;
 
+    std::vector<Point> mMaskPolygon;
 
-
+    void initBuilding(const std::string &_buildName, const std::string &_assetName , const int &_width, const int &_height, std::vector<Point> _polygon);
 };
+
+
+
+
+
 
 
 }

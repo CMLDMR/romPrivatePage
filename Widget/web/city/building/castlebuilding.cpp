@@ -13,7 +13,9 @@ namespace WebWidget {
 namespace Building {
 
 CastleBuilding::CastleBuilding(const bool buildMenu)
+    : BaseWidget(::Building::Type::castle)
 {
+
     this->addAttribute(Style::background::url(this->assetPath()))
             .addAttribute(Style::background::size::contain)
             .addAttribute(Style::background::repeat::norepeat)
@@ -27,10 +29,10 @@ CastleBuilding::CastleBuilding(const bool buildMenu)
 
         auto container = vLayout->addWidget(std::make_unique<Wt::WContainerWidget>());
         container->setAttributeValue(Style::style,Style::background::color::rgba(75,156,134)+Style::color::color(Style::color::White::AliceBlue));
-        container->addNew<WText>(this->itemName());
+        container->addNew<WText>(this->buildingName());
     }else{
-        this->setWidth(this->assetWidth());
-        this->setHeight(this->assetHeight());
+        this->setWidth(this->buildingWidth());
+        this->setHeight(this->buildingHeight());
     }
     this->decorationStyle().setCursor(Wt::Cursor::PointingHand);
 }

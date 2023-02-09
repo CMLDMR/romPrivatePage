@@ -8,6 +8,14 @@
 
 
 
+#include <ostream>
+
+namespace WebWidget {
+namespace Building{
+class BaseWidget;
+}
+}
+
 
 namespace City{
 
@@ -37,6 +45,21 @@ public:
 
     Wt::WImage* mCityImage;
 
+
+    WebWidget::Building::BaseWidget* mNewBuildingPlaceAreaWidget;
+    template<typename T>
+    void addToCursor(const int &x, const int &y);
+
+    std::list<WebWidget::Building::BaseWidget*> mBuildList;
+
+
+
+    bool mBuildingPlaceAble{true};
+private:
+
+
+
+    bool PointInPolygon( ::Building::Point point, const std::vector<::Building::Point> &points);
 };
 
 }
