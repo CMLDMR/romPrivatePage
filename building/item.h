@@ -9,16 +9,14 @@ namespace GameCore {
 class Item
 {
 public:
-    Item(const std::string &_name);
+    Item();
 
 
 
-    std::string itemName() const;
 
 
 private:
 
-    std::string mItemName;
 
 
 

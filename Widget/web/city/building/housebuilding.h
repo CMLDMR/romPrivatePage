@@ -1,7 +1,6 @@
 #ifndef WEBWIDGET_BUILDING_HOUSEBUILDING_H
 #define WEBWIDGET_BUILDING_HOUSEBUILDING_H
 
-#include <City/assets/house.h>
 
 #include "Widget/web/city/building/basewidget.h"
 
@@ -9,7 +8,7 @@
 namespace WebWidget {
 namespace Building {
 
-class HouseBuilding : public Assets::House, public BaseWidget
+class HouseBuilding : public BaseWidget
 {
 public:
     HouseBuilding(const bool buildMenu = false);

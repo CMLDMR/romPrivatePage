@@ -12,16 +12,14 @@ using namespace Wt;
 namespace WebWidget {
 
 Building::MainBuilding::MainBuilding(const bool buildMenu)
-    : BaseWidget("Ana Bina")
+    : BaseWidget(::Building::Type::main)
 {
 
-    this->setBuildType(::Building::Type::main);
+
     this->setAttributeValue(Style::style,Style::background::url(this->assetPath())+
                             Style::background::size::contain+
                             Style::background::repeat::norepeat+
                             Style::background::position::center_center);
-
-    this->setGeometry(this->assetWidth(),this->assetHeight());
 
     if( buildMenu ){
 
@@ -31,10 +29,10 @@ Building::MainBuilding::MainBuilding(const bool buildMenu)
 
         auto container = vLayout->addWidget(std::make_unique<Wt::WContainerWidget>());
         container->setAttributeValue(Style::style,Style::background::color::rgba(75,156,134)+Style::color::color(Style::color::White::AliceBlue));
-        container->addNew<WText>(this->itemName());
+        container->addNew<WText>(this->buildingName());
     }else{
-        this->setWidth(this->assetWidth());
-        this->setHeight(this->assetHeight());
+        this->setWidth(this->buildingWidth());
+        this->setHeight(this->buildingHeight());
     }
     this->decorationStyle().setCursor(Wt::Cursor::PointingHand);
 }

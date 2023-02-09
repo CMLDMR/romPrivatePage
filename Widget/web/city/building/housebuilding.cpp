@@ -14,15 +14,13 @@ namespace WebWidget {
 namespace Building {
 
 HouseBuilding::HouseBuilding(const bool buildMenu)
-    : BaseWidget("Ev")
+    : BaseWidget(::Building::Type::house)
 {
-    this->setBuildType(::Building::Type::house);
+
     this->addAttribute(Style::background::url(this->assetPath()))
             .addAttribute(Style::background::size::contain)
             .addAttribute(Style::background::repeat::norepeat)
             .addAttribute(Style::background::position::center_center);
-
-    this->setGeometry(this->assetWidth(),this->assetHeight());
 
     if( buildMenu ){
 
@@ -32,10 +30,10 @@ HouseBuilding::HouseBuilding(const bool buildMenu)
 
         auto container = vLayout->addWidget(std::make_unique<Wt::WContainerWidget>());
         container->setAttributeValue(Style::style,Style::background::color::rgba(75,156,134)+Style::color::color(Style::color::White::AliceBlue));
-        container->addNew<WText>(this->itemName());
+        container->addNew<WText>(this->buildingName());
     }else{
-        this->setWidth(this->assetWidth());
-        this->setHeight(this->assetHeight());
+        this->setWidth(this->buildingWidth());
+        this->setHeight(this->buildingHeight());
     }
     this->decorationStyle().setCursor(Wt::Cursor::PointingHand);
 

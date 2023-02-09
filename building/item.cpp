@@ -2,16 +2,9 @@
 
 namespace GameCore {
 
-Item::Item(const std::string &_name)
-    :mItemName(_name)
+Item::Item()
 {
 
-}
-
-
-std::string Item::itemName() const
-{
-    return mItemName;
 }
 
 

@@ -169,7 +169,7 @@ void City::CityMap::addBuild(const int &x, const int &y)
     mBuildList.push_back(building);
 
     building->clicked().connect([=](){
-        std::cout << building->itemName() << "\n";
+        std::cout << building->buildingName() << "\n";
     });
 }
 

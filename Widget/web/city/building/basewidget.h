@@ -2,7 +2,6 @@
 #define WEBWIDGET_BUILDING_BASEWIDGET_H
 
 #include "utility/style.h"
-#include "utility/utility.h"
 #include <Wt/WContainerWidget.h>
 
 #include <building/building.h>
@@ -14,7 +13,7 @@ namespace Building {
 class BaseWidget : public Wt::WContainerWidget, public ::Building::Building
 {
 public:
-    BaseWidget( const std::string &buildingName);
+    BaseWidget( const ::Building::Type &_type );
 
 
     BaseWidget& addAttribute( const std::string &_attribute );
@@ -25,7 +24,6 @@ public:
     static std::unique_ptr<T> isRightPlaceToBuild(const bool collisioned = false){
         auto container = std::make_unique<T>();
         container->setPositionScheme(Wt::PositionScheme::Absolute);
-        LOG << container->deniedPlaceAreaAssetPath() << "\n";
         if( collisioned ){
             container->setAttributeValue(Style::style,Style::background::url(container->deniedPlaceAreaAssetPath())
                                                            +Style::background::size::contain
