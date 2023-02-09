@@ -2,7 +2,7 @@
 #define BUILDING_H
 
 #include "item.h"
-
+#include <vector>
 
 
 namespace Building{
@@ -12,6 +12,13 @@ enum Type{
     castle,
     house,
     farmer
+};
+
+
+struct Point
+{
+    int x;
+    int y;
 };
 
 class Building : public GameCore::Item
@@ -36,6 +43,7 @@ public:
 
     std::string deniedPlaceAreaAssetPath() const;
 
+    std::vector<Point> getPolyShape() const;
 private:
     Type mBuildType;
 
@@ -49,8 +57,15 @@ private:
 
     std::string mBuildingName;
 
-    void initBuilding( const std::string &_buildName, const std::string &_assetName );
+    std::vector<Point> mMaskPolygon;
+
+    void initBuilding(const std::string &_buildName, const std::string &_assetName , const int &_width, const int &_height, std::vector<Point> _polygon);
 };
+
+
+
+
+
 
 
 }
