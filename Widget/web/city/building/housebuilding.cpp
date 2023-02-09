@@ -14,11 +14,15 @@ namespace WebWidget {
 namespace Building {
 
 HouseBuilding::HouseBuilding(const bool buildMenu)
+    : BaseWidget("Ev")
 {
+    this->setBuildType(::Building::Type::house);
     this->addAttribute(Style::background::url(this->assetPath()))
             .addAttribute(Style::background::size::contain)
             .addAttribute(Style::background::repeat::norepeat)
             .addAttribute(Style::background::position::center_center);
+
+    this->setGeometry(this->assetWidth(),this->assetHeight());
 
     if( buildMenu ){
 
@@ -35,18 +39,18 @@ HouseBuilding::HouseBuilding(const bool buildMenu)
     }
     this->decorationStyle().setCursor(Wt::Cursor::PointingHand);
 
-//    this->clicked().connect([=](){
-//        if( !this->selected() ){
-//            this->decorationStyle().setBorder(WBorder(BorderStyle::Solid,BorderWidth::Thin,WColor(StandardColor::DarkGray)));
-//            this->togleSelected();
-//            _selectedBuild.emit(this->buildType(),true);
-//        }else{
-//            this->decorationStyle().setBorder(WBorder(BorderStyle::None,BorderWidth::Thin,WColor(StandardColor::Black)));
-//            this->togleSelected();
-//            _selectedBuild.emit(this->buildType(),false);
+    //    this->clicked().connect([=](){
+    //        if( !this->selected() ){
+    //            this->decorationStyle().setBorder(WBorder(BorderStyle::Solid,BorderWidth::Thin,WColor(StandardColor::DarkGray)));
+    //            this->togleSelected();
+    //            _selectedBuild.emit(this->buildType(),true);
+    //        }else{
+    //            this->decorationStyle().setBorder(WBorder(BorderStyle::None,BorderWidth::Thin,WColor(StandardColor::Black)));
+    //            this->togleSelected();
+    //            _selectedBuild.emit(this->buildType(),false);
 
-//        }
-//    });
+    //        }
+    //    });
 
 }
 

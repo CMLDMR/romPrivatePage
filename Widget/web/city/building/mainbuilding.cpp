@@ -12,12 +12,16 @@ using namespace Wt;
 namespace WebWidget {
 
 Building::MainBuilding::MainBuilding(const bool buildMenu)
+    : BaseWidget("Ana Bina")
 {
 
-    this->addAttribute(Style::background::url(this->assetPath()))
-            .addAttribute(Style::background::size::contain)
-            .addAttribute(Style::background::repeat::norepeat)
-            .addAttribute(Style::background::position::center_center);
+    this->setBuildType(::Building::Type::main);
+    this->setAttributeValue(Style::style,Style::background::url(this->assetPath())+
+                            Style::background::size::contain+
+                            Style::background::repeat::norepeat+
+                            Style::background::position::center_center);
+
+    this->setGeometry(this->assetWidth(),this->assetHeight());
 
     if( buildMenu ){
 
@@ -33,20 +37,9 @@ Building::MainBuilding::MainBuilding(const bool buildMenu)
         this->setHeight(this->assetHeight());
     }
     this->decorationStyle().setCursor(Wt::Cursor::PointingHand);
-
-//    this->clicked().connect([=](){
-//        if( !this->selected() ){
-//            this->decorationStyle().setBorder(WBorder(BorderStyle::Solid,BorderWidth::Thin,WColor(StandardColor::DarkGray)));
-//            this->togleSelected();
-//            _selectedBuild.emit(this->buildType(),true);
-//        }else{
-//            this->decorationStyle().setBorder(WBorder(BorderStyle::None,BorderWidth::Thin,WColor(StandardColor::Black)));
-//            this->togleSelected();
-//            _selectedBuild.emit(this->buildType(),false);
-
-//        }
-//    });
 }
+
+
 
 Wt::Signal<::Building::Type, bool> &Building::MainBuilding::SelectedBuild()
 {

@@ -150,8 +150,6 @@ City::CityMap::CityMap()
         if( mNewBuildingPlaceAreaWidget ){
             mMap->removeWidget(mNewBuildingPlaceAreaWidget);
             mNewBuildingPlaceAreaWidget = nullptr;
-//            mNewBuildingPlaceAreaWidget->offset(Side::Bottom).toPixels()
-
         }
 
     });
@@ -166,11 +164,7 @@ void City::CityMap::addBuild(const int &x, const int &y)
 {
     auto building = mMap->addNew<T>();
     building->setPositionScheme(PositionScheme::Absolute);
-    building->setOffsets(y-building->assetHeight()/2,Side::Top);
-    building->setOffsets(x-building->assetWidth()/2,Side::Left);
-    building->setPosition(x-building->assetWidth()/2,y-building->assetHeight()/2);
-//    building->setAttributeValue(Style::style,Style::Border::border("1px solid black"));
-
+    building->setPosition(x,y);
 
     mBuildList.push_back(building);
 
@@ -185,6 +179,6 @@ void City::CityMap::addToCursor(const int &x, const int &y)
     if( !mNewBuildingPlaceAreaWidget ){
         mNewBuildingPlaceAreaWidget = mMap->addWidget(WebWidget::Building::BaseWidget::isRightPlaceToBuild<T>());
     }
-    mNewBuildingPlaceAreaWidget->setOffsets(y-static_cast<T>(mNewBuildingPlaceAreaWidget).assetHeight()/2,Side::Top);
-    mNewBuildingPlaceAreaWidget->setOffsets(x-static_cast<T>(mNewBuildingPlaceAreaWidget).assetWidth()/2,Side::Left);
+    mNewBuildingPlaceAreaWidget->setPosition(x,y);
+
 }

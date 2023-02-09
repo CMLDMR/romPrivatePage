@@ -1,33 +1,32 @@
 #include "building.h"
 
 
-
-
-
 Building::Type Building::Building::buildType() const
 {
     return mBuildType;
 }
-int Building::Building::yPos()  const
+
+void Building::Building::setGeometry(const int &width, const int &height)
 {
-    return mYPos;
+    this->mAssetWidth = width;
+    this->mAssetHeight = height;
 }
 
-int Building::Building::xPos()  const
+int Building::Building::buildingWidth() const
 {
-    return mXPos;
+    return this->mAssetWidth;
 }
 
-
-void Building::Building::setPosition(const int &x, const int &y)
+int Building::Building::buildingheight() const
 {
-    this->mXPos = x;
-    this->mYPos = y;
-}
-
-std::pair<int, int> Building::Building::Position() const
-{
-    return std::make_pair(this->mXPos,this->mYPos);
+    return this->mAssetHeight;
 }
 
 
+namespace Building {
+void Building::setBuildType(Type newBuildType)
+{
+    mBuildType = newBuildType;
+}
+
+}

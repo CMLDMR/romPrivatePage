@@ -2,16 +2,19 @@
 #define WEBWIDGET_BUILDING_BASEWIDGET_H
 
 #include "utility/style.h"
+#include "utility/utility.h"
 #include <Wt/WContainerWidget.h>
+
+#include <building/building.h>
 
 
 namespace WebWidget {
 namespace Building {
 
-class BaseWidget : public Wt::WContainerWidget
+class BaseWidget : public Wt::WContainerWidget, public ::Building::Building
 {
 public:
-    BaseWidget( );
+    BaseWidget( const std::string &buildingName);
 
 
     BaseWidget& addAttribute( const std::string &_attribute );
@@ -22,14 +25,15 @@ public:
     static std::unique_ptr<T> isRightPlaceToBuild(const bool collisioned = false){
         auto container = std::make_unique<T>();
         container->setPositionScheme(Wt::PositionScheme::Absolute);
+        LOG << container->deniedPlaceAreaAssetPath() << "\n";
         if( collisioned ){
-            container->setAttributeValue(Style::style,Style::background::url(container->deniedPlaceAreaPath())
+            container->setAttributeValue(Style::style,Style::background::url(container->deniedPlaceAreaAssetPath())
                                                            +Style::background::size::contain
                                                            +Style::background::position::center_center
                                                            +Style::background::repeat::norepeat
                                          +Style::Border::border("1px solid black"));
         }else{
-            container->setAttributeValue(Style::style,Style::background::url(container->acceptedPlaceAreaPath())
+            container->setAttributeValue(Style::style,Style::background::url(container->acceptedPlaceAreaAssetPath())
                                                            +Style::background::size::contain
                                                            +Style::background::position::center_center
                                                            +Style::background::repeat::norepeat
@@ -44,6 +48,13 @@ public:
     bool selected() const;
     void setSelected( bool _selected = true );
 
+    void setPosition( const int &x , const int &y );
+    std::pair<int,int> Position() const;
+
+    int xPos() const;
+
+    int yPos() const;
+
 
 
 private:
@@ -54,6 +65,8 @@ private:
 
 
 
+    int mXPos;
+    int mYPos;
 
 
 };

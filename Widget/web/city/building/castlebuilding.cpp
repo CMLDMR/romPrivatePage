@@ -13,11 +13,15 @@ namespace WebWidget {
 namespace Building {
 
 CastleBuilding::CastleBuilding(const bool buildMenu)
+    : BaseWidget("Kale")
 {
+    this->setBuildType(::Building::Type::castle);
     this->addAttribute(Style::background::url(this->assetPath()))
             .addAttribute(Style::background::size::contain)
             .addAttribute(Style::background::repeat::norepeat)
             .addAttribute(Style::background::position::center_center);
+
+    this->setGeometry(this->assetWidth(),this->assetHeight());
 
     if( buildMenu ){
 

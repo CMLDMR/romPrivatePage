@@ -3,14 +3,34 @@
 namespace Assets {
 
 House::House()
-    :Building::Building("Ev")
 {
-    this->setAssetPath("assets/building/house1building.png");
-    this->setAcceptedPlaceAreaPath("assets/building/house1building-accept.png");
-    this->setDeniedPlaceAreaPath("assets/building/house1building-deny.png");
-    this->setAssetsGeometry(224,127);
-    this->mBuildType = ::Building::Type::house;
 
+
+}
+
+int House::assetWidth() const
+{
+    return mAssetWidth;
+}
+
+int House::assetHeight() const
+{
+    return mAssetHeight;
+}
+
+std::string House::assetPath() const
+{
+    return mAssetPath;
+}
+
+std::string House::acceptedPlaceAreaAssetPath() const
+{
+    return mAcceptedPlaceAreaAssetPath;
+}
+
+std::string House::deniedPlaceAreaAssetPath() const
+{
+    return mDeniedPlaceAreaAssetPath;
 }
 
 } // namespace Assets

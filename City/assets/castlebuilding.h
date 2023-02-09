@@ -5,14 +5,31 @@
 
 namespace Assets {
 
-class CastleBuilding : public Building::Building
+class CastleBuilding
 {
 public:
     CastleBuilding();
 
 
+    int assetWidth() const;
+
+    int assetHeight() const;
+
+    std::string assetPath() const;
+
+    std::string acceptedPlaceAreaAssetPath() const;
+
+    std::string deniedPlaceAreaAssetPath() const;
+
 private:
-    friend class Building::Building;
+    const std::string mAssetName{"castlebuilding"};
+    const std::string mAssetPath{"assets/building/"+mAssetName+".png"};
+    const std::string mAcceptedPlaceAreaAssetPath{"assets/building/"+mAssetName+"-"+"accept"+".png"};
+    const std::string mDeniedPlaceAreaAssetPath{"assets/building/"+mAssetName+"-"+"deny"+".png"};
+
+
+    const int mAssetWidth{170};
+    const int mAssetHeight{108};
 };
 
 } // namespace Assets

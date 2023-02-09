@@ -7,7 +7,15 @@
 #include <building/building.h>
 
 
+
 #include <ostream>
+
+namespace WebWidget {
+namespace Building{
+class BaseWidget;
+}
+}
+
 
 namespace City{
 
@@ -38,7 +46,7 @@ public:
     Wt::WImage* mCityImage;
 
 
-    Wt::WContainerWidget* mNewBuildingPlaceAreaWidget;
+    WebWidget::Building::BaseWidget* mNewBuildingPlaceAreaWidget;
     template<typename T>
     void addToCursor(const int &x, const int &y);
 

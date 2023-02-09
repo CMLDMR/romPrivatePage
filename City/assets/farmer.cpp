@@ -3,15 +3,33 @@
 namespace Assets {
 
 Farmer::Farmer()
-    :Building::Building("Çiftlik")
 {
-    this->setAssetPath("assets/building/farmer.png");
-    this->setAcceptedPlaceAreaPath("assets/building/farmer-accept.png");
-    this->setDeniedPlaceAreaPath("assets/building/farmer-deny.png");
 
-    this->setAssetsGeometry(230,137);
+}
 
-    this->mBuildType = ::Building::Type::farmer;
+int Farmer::assetWidth() const
+{
+    return mAssetWidth;
+}
+
+int Farmer::assetHeight() const
+{
+    return mAssetHeight;
+}
+
+std::string Farmer::assetPath() const
+{
+    return mAssetPath;
+}
+
+std::string Farmer::acceptedPlaceAreaAssetPath() const
+{
+    return mAcceptedPlaceAreaAssetPath;
+}
+
+std::string Farmer::deniedPlaceAreaAssetPath() const
+{
+    return mDeniedPlaceAreaAssetPath;
 }
 
 } // namespace Assets

@@ -12,11 +12,15 @@ namespace WebWidget {
 namespace Building {
 
 Farmer::Farmer(const bool buildMenu)
+    :BaseWidget("Çiftlik")
 {
+    this->setBuildType(::Building::Type::farmer);
     this->addAttribute(Style::background::url(this->assetPath()))
             .addAttribute(Style::background::size::contain)
             .addAttribute(Style::background::repeat::norepeat)
             .addAttribute(Style::background::position::center_center);
+
+    this->setGeometry(this->assetWidth(),this->assetHeight());
 
     if( buildMenu ){
 

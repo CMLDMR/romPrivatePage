@@ -8,7 +8,8 @@ using namespace Wt;
 namespace WebWidget {
 namespace Building {
 
-BaseWidget::BaseWidget()
+BaseWidget::BaseWidget(const std::string &buildingName)
+    : ::Building::Building(buildingName)
 {
 
 }
@@ -53,6 +54,29 @@ void BaseWidget::setSelected(bool _selected)
     }else{
         this->decorationStyle().setBorder(WBorder(BorderStyle::None,BorderWidth::Thin,WColor(StandardColor::Black)));
     }
+}
+
+void BaseWidget::setPosition(const int &x, const int &y)
+{
+    this->mXPos = x;
+    this->mYPos = y;
+    this->setOffsets(this->mXPos-this->buildingWidth()/2,Side::Left);
+    this->setOffsets(this->mYPos-this->buildingheight()/2,Side::Top);
+}
+
+std::pair<int, int> BaseWidget::Position() const
+{
+    return std::make_pair(this->mXPos,this->mYPos);
+}
+
+int BaseWidget::xPos() const
+{
+    return mXPos;
+}
+
+int BaseWidget::yPos() const
+{
+    return mYPos;
 }
 
 

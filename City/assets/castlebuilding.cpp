@@ -3,14 +3,33 @@
 namespace Assets {
 
 CastleBuilding::CastleBuilding()
-    :Building::Building("Kale")
 {
-    this->setAssetPath("assets/building/castlebuilding.png");
-    this->setAcceptedPlaceAreaPath("assets/building/castlebuilding-accept.png");
-    this->setDeniedPlaceAreaPath("assets/building/castlebuilding-deny.png");
-    this->setAssetsGeometry(170,108);
 
-    this->mBuildType = ::Building::Type::castle;
+}
+
+int CastleBuilding::assetWidth() const
+{
+    return mAssetWidth;
+}
+
+int CastleBuilding::assetHeight() const
+{
+    return mAssetHeight;
+}
+
+std::string CastleBuilding::assetPath() const
+{
+    return mAssetPath;
+}
+
+std::string CastleBuilding::acceptedPlaceAreaAssetPath() const
+{
+    return mAcceptedPlaceAreaAssetPath;
+}
+
+std::string CastleBuilding::deniedPlaceAreaAssetPath() const
+{
+    return mDeniedPlaceAreaAssetPath;
 }
 
 } // namespace Assets

@@ -2,17 +2,10 @@
 #define BUILDING_H
 
 #include "item.h"
-#include <ostream>
 
-namespace Assets {
-    class CastleBuilding;
-    class House;
-    class MainBuilding;
-    class Farmer;
-}
+
 
 namespace Building{
-
 
 enum Type{
     main = 0,
@@ -21,7 +14,6 @@ enum Type{
     farmer
 };
 
-
 class Building : public GameCore::Item
 {
 public:
@@ -29,26 +21,18 @@ public:
 
     Type buildType() const;
 
-    void setPosition( const int &x , const int &y );
-    std::pair<int,int> Position() const;
+    void setGeometry( const int &width , const int &height );
 
-    int xPos() const;
+    int buildingWidth() const;
+    int buildingheight() const;
 
-    int yPos() const;
+    void setBuildType(Type newBuildType);
+
 private:
     Type mBuildType;
 
-    int mXPos;
-    int mYPos;
-
-public:
-    friend class Assets::CastleBuilding;
-    friend class Assets::House;
-    friend class Assets::MainBuilding;
-    friend class Assets::Farmer;
-
-
-
+    int mAssetWidth;
+    int mAssetHeight;
 };
 
 
