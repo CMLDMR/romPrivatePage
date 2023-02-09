@@ -118,43 +118,65 @@ City::CityMap::CityMap()
     mMap->mouseWentUp().connect([=]( const Wt::WMouseEvent &event){
 
         if( event.button() == Wt::WMouseEvent::Button::Left ){
-            auto [selected,selectedType] = mAssetsManager->selected();
-            if( selected ){
-                switch (selectedType) {
 
-                case Building::Type::main:
-                    this->addBuild<WebWidget::Building::MainBuilding>(event.widget().x,event.widget().y);
-                    break;
+            if( mBuildingPlaceAble ){
+                auto [selected,selectedType] = mAssetsManager->selected();
 
-                case Building::Type::castle:
-                    this->addBuild<WebWidget::Building::CastleBuilding>(event.widget().x,event.widget().y);
+                if( selected ){
+                    switch (selectedType) {
 
-                    break;
-                case Building::Type::house:
-                    this->addBuild<WebWidget::Building::HouseBuilding>(event.widget().x,event.widget().y);
+                    case Building::Type::main:
+                        this->addBuild<WebWidget::Building::MainBuilding>(event.widget().x,event.widget().y);
+                        break;
 
-                    break;
+                    case Building::Type::castle:
+                        this->addBuild<WebWidget::Building::CastleBuilding>(event.widget().x,event.widget().y);
 
-                case Building::Type::farmer:
-                    this->addBuild<WebWidget::Building::Farmer>(event.widget().x,event.widget().y);
+                        break;
+                    case Building::Type::house:
+                        this->addBuild<WebWidget::Building::HouseBuilding>(event.widget().x,event.widget().y);
 
-                    break;
-                default:
-                    break;
+                        break;
+
+                    case Building::Type::farmer:
+                        this->addBuild<WebWidget::Building::Farmer>(event.widget().x,event.widget().y);
+
+                        break;
+                    default:
+                        break;
+                    }
+                }
+
+                mAssetsManager->unSelectAll();
+
+                if( mNewBuildingPlaceAreaWidget ){
+                    mMap->removeWidget(mNewBuildingPlaceAreaWidget);
+                    mNewBuildingPlaceAreaWidget = nullptr;
                 }
             }
+
+
         }
 
-        mAssetsManager->unSelectAll();
 
-        if( mNewBuildingPlaceAreaWidget ){
-            mMap->removeWidget(mNewBuildingPlaceAreaWidget);
-            mNewBuildingPlaceAreaWidget = nullptr;
-        }
 
     });
 
 
+}
+
+bool City::CityMap::PointInPolygon(Building::Point point, const std::vector<Building::Point> &points)
+{
+    int i, j, nvert = points.size();
+    bool c = false;
+
+    for(i = 0, j = nvert - 1; i < nvert; j = i++) {
+      if( ( (points[i].y >= point.y ) != (points[j].y >= point.y) ) &&
+          (point.x <= (points[j].x - points[i].x) * (point.y - points[i].y) / (points[j].y - points[i].y) + points[i].x)
+        )
+        c = !c;
+    }
+    return c;
 }
 
 
@@ -176,9 +198,35 @@ void City::CityMap::addBuild(const int &x, const int &y)
 template<typename T>
 void City::CityMap::addToCursor(const int &x, const int &y)
 {
-    if( !mNewBuildingPlaceAreaWidget ){
-        mNewBuildingPlaceAreaWidget = mMap->addWidget(WebWidget::Building::BaseWidget::isRightPlaceToBuild<T>());
+    bool mCollisioned = false;
+    auto _mNewObject = std::make_unique<T>();
+
+
+    auto nPoints = _mNewObject->getPolyShapeToGlobal(x,y);
+
+
+    for( auto &point : nPoints ){
+        for( const auto pObj : mBuildList ){
+            auto _pLis = pObj->getPolyShapeToGlobal(pObj->xPos(),pObj->yPos());
+            if( PointInPolygon(point,_pLis ) && !mCollisioned ){
+                mCollisioned = true;
+                break;
+            }
+        }
+        if( mCollisioned ) break;
+
+
     }
+
+
+    if( !mNewBuildingPlaceAreaWidget ){
+        mNewBuildingPlaceAreaWidget = mMap->addWidget(WebWidget::Building::BaseWidget::isRightPlaceToBuild<T>(mCollisioned));
+    }
+
+    mBuildingPlaceAble = !mCollisioned;
+    mNewBuildingPlaceAreaWidget->placeAbleShape()->setWrong(mCollisioned);
+
     mNewBuildingPlaceAreaWidget->setPosition(x,y);
+
 
 }

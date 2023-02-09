@@ -33,24 +33,15 @@ public:
     static std::unique_ptr<T> isRightPlaceToBuild(const bool collisioned = false){
         auto container = std::make_unique<T>();
         container->setPositionScheme(Wt::PositionScheme::Absolute);
-//        if( collisioned ){
-
-//            container->setAttributeValue(Style::style,Style::background::url(container->deniedPlaceAreaAssetPath())
-//                                                           +Style::background::size::contain
-//                                                           +Style::background::position::center_center
-//                                                           +Style::background::repeat::norepeat
-//                                         +Style::Border::border("1px solid black"));
-//        }else{
-//            container->setAttributeValue(Style::style,Style::background::url(container->acceptedPlaceAreaAssetPath())
-//                                                           +Style::background::size::contain
-//                                                           +Style::background::position::center_center
-//                                                           +Style::background::repeat::norepeat
-//                                         +Style::Border::border("1px solid black"));
-//        }
-
-        container->addNew<BuildingPlaceArea>(container->getPolyShape());
-
+//        container->addNew<BuildingPlaceArea>(container->getPolyShape(),collisioned);
+        container->addPlaceAbleShape(container->getPolyShape(),collisioned);
         return container;
+    }
+
+    void addPlaceAbleShape(const std::vector<::Building::Point> &_pList , const bool _WordPlace = false){
+
+        mPlaceAbleShape = this->addNew<BuildingPlaceArea>(_pList,_WordPlace);
+
     }
 
 
@@ -67,6 +58,8 @@ public:
 
 
 
+    BuildingPlaceArea *placeAbleShape();
+
 private:
     std::list<std::string> mAttriuteList;
     void updateAttribute();
@@ -78,6 +71,7 @@ private:
     int mXPos;
     int mYPos;
 
+    BuildingPlaceArea* mPlaceAbleShape;
 
 };
 
@@ -85,11 +79,11 @@ private:
 class BuildingPlaceArea : public Wt::WPaintedWidget
 {
 public:
-    BuildingPlaceArea(const std::vector<::Building::Point> &_pList)
+    BuildingPlaceArea(const std::vector<::Building::Point> &_pList , const bool _WordPlace = false)
+        :mWrongPlace(_WordPlace)
     {
 
-        int xMax{0};
-        int yMax{0};
+
 
         std::vector<Wt::WPointF> __pList;
         for( const auto &item : _pList ){
@@ -103,18 +97,33 @@ public:
         this->update();
     }
 
+    void setWrong( const bool _wrongPlace ){
+        mWrongPlace = _wrongPlace;
+        this->update();
+    }
+
 
 
 protected:
     void paintEvent(Wt::WPaintDevice *paintDevice){
         Wt::WPainter painter(paintDevice);
 
-        painter.fillPath(mMaskPath,Wt::WBrush(Wt::WColor(75,200,150,125)));
+        if( mWrongPlace ){
+            painter.fillPath(mMaskPath,Wt::WBrush(Wt::WColor(150,50,75,175)));
+            painter.setPen(Wt::WPen(Wt::StandardColor::Red));
+            painter.drawText(0,0,xMax,yMax,Wt::AlignmentFlag::Center|Wt::AlignmentFlag::Middle,"Hatalı Yer");
+        }else{
+            painter.fillPath(mMaskPath,Wt::WBrush(Wt::WColor(75,200,150,125)));
+        }
 
     }
 
+    int xMax{0};
+    int yMax{0};
+
 
     Wt::WPainterPath mMaskPath;
+    bool mWrongPlace;
 
 
 };

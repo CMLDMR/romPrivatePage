@@ -80,6 +80,16 @@ std::vector<Point> Building::getPolyShape() const
     return mMaskPolygon;
 }
 
+std::vector<Point> Building::getPolyShapeToGlobal(const int &x, const int &y) const
+{
+    std::vector<Point> list;
+    for( const auto &point : this->mMaskPolygon ){
+        Point p{point.x+x,point.y+y};
+        list.push_back(p);
+    }
+    return list;
+}
+
 void Building::initBuilding(const std::string &_buildName, const std::string &_assetName,
                             const int &_width, const int &_height,
                             std::vector<Point> _polygon)

@@ -44,6 +44,9 @@ public:
     std::string deniedPlaceAreaAssetPath() const;
 
     std::vector<Point> getPolyShape() const;
+
+    std::vector<Point> getPolyShapeToGlobal( const int &x, const int &y ) const;
+
 private:
     Type mBuildType;
 

@@ -41,6 +41,11 @@ void BaseWidget::updateAttribute()
     this->setAttributeValue(Style::style,_attribue);
 }
 
+BuildingPlaceArea *BaseWidget::placeAbleShape()
+{
+    return mPlaceAbleShape;
+}
+
 
 
 bool BaseWidget::selected() const
