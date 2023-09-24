@@ -34,7 +34,7 @@ City::CityMap::CityMap()
     this->setScrollVisibilityEnabled(false);
     this->setOverflow(Overflow::Hidden);
 
-    mControlPanel = this->addNew<ControlPanel>();
+//    mControlPanel = this->addNew<ControlPanel>();
     mCityManager = this->addNew<CityManager>();
     mAssetsManager = this->addNew<AssetsManager>();
     mTaskManager = this->addNew<TaskManager>();
