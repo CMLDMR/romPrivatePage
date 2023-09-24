@@ -6,7 +6,8 @@
 
 using namespace Wt;
 
-class World;
+class WorldMap;
+
 namespace City{
 class CityMap;
 class ControlPanel;
@@ -23,8 +24,10 @@ private:
     void initializeComponent();
 
 private:
-    World* mWorld;
-    City::CityMap* mCityMap;
+//    World* mWorld;
+//    City::CityMap* mCityMap;
+
+    WContainerWidget* m_map;
 
     City::ControlPanel *m_controlPanel;
 };

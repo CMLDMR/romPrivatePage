@@ -6,11 +6,11 @@
 #include <optional>
 #include <building/building.h>
 
-class World : public Wt::WContainerWidget
+class WorldMap : public Wt::WContainerWidget
 {
 
 public:
-    World();
+    WorldMap();
 
 
 //    bool addItem(const int &row , const int &col );
