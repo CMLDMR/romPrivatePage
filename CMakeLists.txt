@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 
 project(CanvasWT LANGUAGES CXX)
 
+set(WT_VERSION 4.9.1)
+
 
 #set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "C:/Qt/Tools/ccache-4.7.4-windows-x86_64")
 
@@ -33,7 +35,7 @@ add_executable(CanvasWT ${HEADERS} ${SOURCES} )
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 
-set(Wt_Path C:/Wt_4.9.1_msvs2022_x64)
+set(Wt_Path C:/Wt_${WT_VERSION}_msvs2022_x64)
 set(Wt_DIR ${Wt_Path}/lib/cmake/wt)
 FIND_PACKAGE( Wt REQUIRED )
 

@@ -125,13 +125,4 @@ void ControlPanel::initializePanel()
 
 }
 
-void ControlPanel::changeMap(Map map)
-{
-
-    if( map == Map::World ){
-//        wApp->root()
-    }
-
-}
-
 } // namespace City

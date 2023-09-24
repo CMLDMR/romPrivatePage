@@ -23,8 +23,6 @@ private: //Functions Declaration
     void initializePanel();
 
 
-    void changeMap(Map map);
-
 private: //Variable Declaration
 
     Wt::Signal<Map> m_selectMap;
