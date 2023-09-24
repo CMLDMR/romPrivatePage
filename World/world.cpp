@@ -1,5 +1,4 @@
 #include "world.h"
-#include "Wt/WCssDecorationStyle.h"
 #include <Wt/WText.h>
 
 

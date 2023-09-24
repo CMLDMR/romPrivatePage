@@ -35,7 +35,7 @@ public:
 
     Wt::WContainerWidget* mMap;
 
-    ControlPanel* mControlPanel;
+//    ControlPanel* mControlPanel;
     CityManager* mCityManager;
 
     AssetsManager* mAssetsManager;
