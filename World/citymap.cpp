@@ -18,9 +18,12 @@
 #include "Widget/web/city/building/mainbuilding.h"
 #include "Widget/web/city/building/farmer.h"
 
+#include "GlobalVariable.h"
+
 
 
 using namespace Wt;
+
 
 City::CityMap::CityMap()
 {
@@ -32,6 +35,7 @@ City::CityMap::CityMap()
     this->setContentAlignment(AlignmentFlag::Center);
     this->setScrollVisibilityEnabled(false);
     this->setOverflow(Overflow::Hidden);
+
 
     mCityManager = this->addNew<CityManager>();
     mAssetsManager = this->addNew<AssetsManager>();
@@ -46,6 +50,7 @@ City::CityMap::CityMap()
     cityContainer->setScrollVisibilityEnabled(false);
     cityContainer->setOverflow(Overflow::Hidden);
     cityContainer->setId("citymap");
+    cityContainer->doJavaScript("handDrag();");
 
 
     mCityImage = cityContainer->addNew<WImage>(WLink("cityground1.jpg"));
@@ -64,13 +69,14 @@ City::CityMap::CityMap()
     mMap->setMaximumSize(2000,2000);
 
 
+#ifdef DEVELOPMENTMODE
     auto coorText = addNew<WText>();
     coorText->setPositionScheme(PositionScheme::Absolute);
-    coorText->setOffsets(0,Side::Left|Side::Bottom);
+    coorText->setOffsets(0,Side::Right);
+    coorText->setOffsets(20,Side::Top);
     coorText->setAttributeValue(Style::style,Style::background::color::color(Style::color::Green::DarkCyan)+Style::color::color(Style::color::White::AliceBlue));
     coorText->setZIndex(2201);
-    this->doJavaScript("handDrag();");
-
+#endif
 
     mNewBuildingPlaceAreaWidget = nullptr;
 
@@ -102,7 +108,10 @@ City::CityMap::CityMap()
                 }
         }
 
+#ifdef DEVELOPMENTMODE
         coorText->setText(WString("{1} {2}").arg(event.widget().x).arg(event.widget().y));
+#endif
+
         mDragged = true;
     });
 
@@ -159,6 +168,10 @@ City::CityMap::CityMap()
 
 
     });
+
+
+
+
 
 
 }

@@ -43,7 +43,6 @@ void MainApplication::initializeScriptAndCSS()
 
 void MainApplication::initializeComponent()
 {
-//    mCityMap = root()->addNew<City::CityMap>();
     m_map = root()->addNew<WContainerWidget>();
     m_map->setPositionScheme(PositionScheme::Fixed);
     m_map->setOffsets(0,Side::Top|Side::Left);
