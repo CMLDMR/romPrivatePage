@@ -1,4 +1,4 @@
-#include "world.h"
+#include "WorldMap.h"
 #include <Wt/WText.h>
 
 
@@ -6,7 +6,7 @@ using namespace Wt;
 
 
 
-World::World()
+WorldMap::WorldMap()
 {
     this->setPositionScheme(PositionScheme::Fixed);
     this->setWidth(WLength("100%"));

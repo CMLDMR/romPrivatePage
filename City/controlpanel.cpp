@@ -19,6 +19,18 @@ ControlPanel::ControlPanel()
     this->setZIndex(10);
 
 
+    initializePanel();
+
+}
+
+Signal<Map> &ControlPanel::selectedMap()
+{
+    return m_selectMap;
+}
+
+void ControlPanel::initializePanel()
+{
+
     auto container = this->addNew<WContainerWidget>();
     container->setMaximumSize(1280,WLength::Auto);
     container->decorationStyle().setBackgroundColor(WColor(StandardColor::Cyan));
@@ -46,7 +58,6 @@ ControlPanel::ControlPanel()
     controlPanelContainer->setWidth(720);
     controlPanelContainer->setOffsets(0,Side::Right);
     controlPanelContainer->setOffsets(-20,Side::Top);
-//    controlPanelContainer->decorationStyle().setBackgroundColor(WColor(StandardColor::DarkGreen));
 
 
     auto hLayout = controlPanelContainer->setLayout(std::make_unique<WHBoxLayout>());
@@ -99,7 +110,28 @@ ControlPanel::ControlPanel()
     worldContainer->setWidth(100);
     worldContainer->setHeight(70);
     worldContainer->decorationStyle().setBackgroundColor(WColor(StandardColor::DarkYellow));
-    worldContainer->addNew<WText>("Dünya");
+    m_mapTitleText = worldContainer->addNew<WText>("Dünya");
+        worldContainer->clicked().connect([=](){
+        if( m_currentMap == Map::City ){
+            m_currentMap = Map::World;
+            m_selectMap.emit(m_currentMap);
+            m_mapTitleText->setText(("Şehir"));
+        }else{
+            m_currentMap = Map::City;
+            m_selectMap.emit(m_currentMap);
+            m_mapTitleText->setText(("Dünya"));
+        }
+    });
+
+}
+
+void ControlPanel::changeMap(Map map)
+{
+
+    if( map == Map::World ){
+//        wApp->root()
+    }
+
 }
 
 } // namespace City

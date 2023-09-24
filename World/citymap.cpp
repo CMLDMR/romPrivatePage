@@ -1,4 +1,4 @@
-#include "citymap.h"
+#include "CityMap.h"
 #include <Wt/WCssDecorationStyle.h>
 #include <Wt/WText.h>
 #include <Wt/WString.h>
@@ -10,7 +10,6 @@
 #include <utility/style.h>
 
 
-#include "City/controlpanel.h"
 #include "City/citymanager.h"
 #include "City/assetsmanager.h"
 #include "City/taskmanager.h"
@@ -34,7 +33,6 @@ City::CityMap::CityMap()
     this->setScrollVisibilityEnabled(false);
     this->setOverflow(Overflow::Hidden);
 
-//    mControlPanel = this->addNew<ControlPanel>();
     mCityManager = this->addNew<CityManager>();
     mAssetsManager = this->addNew<AssetsManager>();
     mTaskManager = this->addNew<TaskManager>();

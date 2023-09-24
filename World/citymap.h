@@ -19,7 +19,6 @@ class BaseWidget;
 
 namespace City{
 
-class ControlPanel;
 class CityManager;
 class AssetsManager;
 class TaskManager;
@@ -35,7 +34,6 @@ public:
 
     Wt::WContainerWidget* mMap;
 
-//    ControlPanel* mControlPanel;
     CityManager* mCityManager;
 
     AssetsManager* mAssetsManager;
