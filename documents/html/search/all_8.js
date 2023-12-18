@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['utility_0',['Utility',['../class_utility_1_1_utility.html',1,'Utility']]]
+  ['log_0',['LOG',['../utility_8h.html#a159ca84d25a5487d8e81e4438725df19',1,'utility.h']]]
 ];

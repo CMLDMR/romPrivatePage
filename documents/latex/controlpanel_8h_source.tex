@@ -1,22 +1,42 @@
 \hypertarget{controlpanel_8h_source}{}\doxysection{controlpanel.\+h}
 \label{controlpanel_8h_source}\index{City/controlpanel.h@{City/controlpanel.h}}
-
+\mbox{\hyperlink{controlpanel_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CITY\_CONTROLPANEL\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CITY\_CONTROLPANEL\_H}}
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Wt/WContainerWidget.h>}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }City\ \{}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{_global_variable_8h}{GlobalVariable.h}}>}}
+\DoxyCodeLine{00006\ }
 \DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_city_1_1_control_panel}{ControlPanel}}\ :\ \textcolor{keyword}{public}\ Wt::WContainerWidget}
-\DoxyCodeLine{00009\ \{}
-\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_control_panel}{ControlPanel}}();}
-\DoxyCodeLine{00012\ \};}
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_wt}{Wt}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }WText;}
+\DoxyCodeLine{00010\ \}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_city}{City}}\ \{}
 \DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \}\ \textcolor{comment}{//\ namespace\ City}}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CITY\_CONTROLPANEL\_H}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_city_1_1_control_panel}{ControlPanel}}\ :\ \textcolor{keyword}{public}\ Wt::WContainerWidget}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_control_panel_a3e232f029b8c4b45efd2c32d7b5aa2ee}{ControlPanel}}();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ Wt::Signal<Map>\ \&\mbox{\hyperlink{class_city_1_1_control_panel_aae3a44d93a5b29138c2238bb73e6d749}{selectedMap}}();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{private}:\ \textcolor{comment}{//Functions\ Declaration}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ initializePanel();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:\ \textcolor{comment}{//Variable\ Declaration}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ Wt::Signal<Map>\ m\_selectMap;}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{_global_variable_8h_afdfce14f0d12266a9956f9fe5e4fe1fd}{Map}}\ m\_currentMap\{Map::City\};}
+\DoxyCodeLine{00030\ \ \ \ \ Wt::WText*\ m\_mapTitleText;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \}\ \textcolor{comment}{//\ namespace\ City}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CITY\_CONTROLPANEL\_H}}
 
 \end{DoxyCode}
