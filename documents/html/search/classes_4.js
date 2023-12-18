@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['item_0',['Item',['../class_game_core_1_1_item.html',1,'GameCore']]]
+  ['globalrule_0',['GlobalRule',['../class_c_s_s_1_1_global_rule.html',1,'CSS']]]
 ];

@@ -1,51 +1,79 @@
 \hypertarget{citymap_8h_source}{}\doxysection{citymap.\+h}
 \label{citymap_8h_source}\index{World/citymap.h@{World/citymap.h}}
-
+\mbox{\hyperlink{citymap_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CITYMAP\_H}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CITYMAP\_H}}
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Wt/WContainerWidget.h>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <building/building.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Wt/WImage.h>}}
 \DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{building_8h}{building/building.h}}>}}
 \DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }City\{}
+\DoxyCodeLine{00009\ }
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }ControlPanel;}
-\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }CityManager;}
-\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }AssetsManager;}
-\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }TaskManager;}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_city_1_1_city_map}{CityMap}}\ :\ \textcolor{keyword}{public}\ Wt::WContainerWidget}
-\DoxyCodeLine{00017\ \{}
-\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_city_map}{CityMap}}();}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ addBuild(\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ y,}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&assetPath,}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ width,\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ height);}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ addBuild(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&x\ ,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&y\ );}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ Wt::WContainerWidget*\ mMap;}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_control_panel}{ControlPanel}}*\ mControlPanel;}
-\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_city_manager}{CityManager}}*\ mCityManager;}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_assets_manager}{AssetsManager}}*\ mAssetsManager;}
-\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_task_manager}{TaskManager}}\ *mTaskManager;}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ mDragged\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \};}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <ostream>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_web_widget}{WebWidget}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_building}{Building}}\{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }BaseWidget;}
+\DoxyCodeLine{00016\ \}}
+\DoxyCodeLine{00017\ \}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_city}{City}}\{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }CityManager;}
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }AssetsManager;}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }TaskManager;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_city_1_1_city_map}{CityMap}}\ :\ \textcolor{keyword}{public}\ Wt::WContainerWidget}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_city_map_ae67e4c085de41868eceb64163b6e44e4}{CityMap}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_1_1_city_map_ad2887651e9271f09a7c7d1525d1033a7}{addBuild}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&x\ ,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&y\ );}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ Wt::WContainerWidget*\ \mbox{\hyperlink{class_city_1_1_city_map_aa1541eca817e3ae60a88be93b0e9a54e}{mMap}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_city_manager}{CityManager}}*\ \mbox{\hyperlink{class_city_1_1_city_map_a68fff9cb83439c0fa0a7284d644da998}{mCityManager}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_assets_manager}{AssetsManager}}*\ \mbox{\hyperlink{class_city_1_1_city_map_a3745fd4a8f16d1303afbee4fb8dff7a6}{mAssetsManager}};}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_city_1_1_task_manager}{TaskManager}}\ *\mbox{\hyperlink{class_city_1_1_city_map_a1d6b2cb7be49e691c4d6e905d81d0b4c}{mTaskManager}};}
 \DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_city_1_1_city_map_af24d7044f4ad3cdc6be0cbc865b27e46}{m\_dragged}}\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CITYMAP\_H}}
+\DoxyCodeLine{00044\ \ \ \ \ Wt::WImage*\ \mbox{\hyperlink{class_city_1_1_city_map_a2e89b05463a6f38bc0946267352a787d}{mCityImage}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_web_widget_1_1_building_1_1_base_widget}{WebWidget::Building::BaseWidget}}*\ \mbox{\hyperlink{class_city_1_1_city_map_a4ca13109284955c48721c4a0c07e965e}{mNewBuildingPlaceAreaWidget}};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_1_1_city_map_ad9f7bf5e48bb9fa279348f462c94b7e5}{addToCursor}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&y);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ std::list<WebWidget::Building::BaseWidget*>\ \mbox{\hyperlink{class_city_1_1_city_map_a975d6a505b173997210ab4ffb0d6d1ea}{mBuildList}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_city_1_1_city_map_a8f73a82ef0a6ca2d52d81582b22a4d0b}{mBuildingPlaceAble}}\{\textcolor{keyword}{true}\};}
+\DoxyCodeLine{00056\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ PointInPolygon(\ \mbox{\hyperlink{struct_building_1_1_point}{::Building::Point}}\ point,\ \textcolor{keyword}{const}\ std::vector<::Building::Point>\ \&points);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ mouseMove(\ \textcolor{keyword}{const}\ Wt::WMouseEvent\ \&event\ );}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ mouseDown(\ \textcolor{keyword}{const}\ Wt::WMouseEvent\ \&event\ );}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ mouseUp(\ \textcolor{keyword}{const}\ Wt::WMouseEvent\ \&event\ );}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#ifdef\ DevMODE}}
+\DoxyCodeLine{00064\ \ \ \ \ Wt::WText*\ m\_coordinateText\ \{\ \textcolor{keyword}{nullptr}\ \};}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CITYMAP\_H}}
 
 \end{DoxyCode}

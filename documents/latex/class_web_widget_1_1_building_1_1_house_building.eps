@@ -174,10 +174,9 @@
 boxfont setfont
 1 boundaspect scale
 (WebWidget::Building::HouseBuilding) cw
-(Assets::House) cw
 (WebWidget::Building::BaseWidget) cw
-(Building::Building) cw
 (Wt::WContainerWidget) cw
+(Building::Building) cw
 (GameCore::Item) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
@@ -191,31 +190,26 @@ boundx scalefactor div boundy scalefactor div scale
 % ----- classes -----
 
  (WebWidget::Building::HouseBuilding) 0.500000 0.000000 box
- (Assets::House) 0.000000 1.000000 box
- (WebWidget::Building::BaseWidget) 1.000000 1.000000 box
- (Building::Building) 0.000000 2.000000 box
- (Wt::WContainerWidget) 1.000000 2.000000 box
- (GameCore::Item) 0.000000 3.000000 box
+ (WebWidget::Building::BaseWidget) 0.500000 1.000000 box
+ (Wt::WContainerWidget) 0.000000 2.000000 box
+ (Building::Building) 1.000000 2.000000 box
+ (GameCore::Item) 1.000000 3.000000 box
 
 % ----- relations -----
 
 solid
 0 0.500000 0.000000 out
 solid
-0.000000 1.000000 1.000000 conn
+1 0.500000 1.000000 in
 solid
-1 0.000000 1.000000 in
+0 0.500000 1.000000 out
 solid
-0 0.000000 1.000000 out
-solid
-1 1.000000 1.000000 in
-solid
-0 1.000000 1.000000 out
+0.000000 1.000000 2.000000 conn
 solid
 1 0.000000 2.000000 in
 solid
-0 0.000000 2.000000 out
-solid
 1 1.000000 2.000000 in
 solid
-1 0.000000 3.000000 in
+0 1.000000 2.000000 out
+solid
+1 1.000000 3.000000 in

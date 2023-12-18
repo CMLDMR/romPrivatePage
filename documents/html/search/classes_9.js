@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['world_0',['World',['../class_world.html',1,'']]]
+  ['shapewidget_0',['ShapeWidget',['../class_shape_widget.html',1,'']]]
 ];
